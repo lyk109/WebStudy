@@ -1,0 +1,76 @@
+转义字符；'\' ------ '\n' '\r' '\t'
+转义字符可实现字符串多行输入
+
+正则表达式：匹配特殊字符或特殊搭配原则的字符的最佳选择。
+
+两种创建方式：
+	直接量（推荐用法）
+		var reg = /abc/;  //匹配含有'abc'片段的字符串:'abcd' 'dsaabcda' 'sabc'
+		var reg = /abc/i; //属性i，忽略大小写
+		var reg = /abc/g; //属性g，执行全局匹配
+		var reg = /abc/m; //属性m，执行多行匹配
+	new RegExp()
+		var reg = new RegExp('abc','igm');
+
+判断：reg.test(str)
+匹配结果（数组）：str.match(reg)
+
+[abc]
+[^abc]
+[0-9]
+[A-Z]
+[a-z]
+[A-z]
+([a-z]|[A-Z]|[0-9])
+
+.		查找单个字符，除了换行和行结束符
+\w		查找单词字符 [0-9_A-z]
+\W 		查找非单词字符 [^/w]
+\d 		查找数字[0-9]
+\D 		查找非数字[^\d]
+\s 		查找空白字符：空格 制表\t 回车\r 换行\n 换页\f 垂直换行符\v
+\S 		查找[^\s]
+\b		查找单词边界
+\B 		查找[^\b]
+
+[]+		至少一个
+[]*		零个或一个或多个
+[]?		零个或一个
+[]{n} 	n个
+[]{x,y} x-y个
+[]{n,} 	n个到无穷
+
+^a 		匹配以a开头的字符串
+a$		匹配以a结尾的字符串
+a(?=b)	匹配后面紧接着为b的a
+a(?!=b)	匹配后面紧接着不为b的a
+
+打破贪婪匹配，后面＋?
+
+reg.exec();   //index属性表示匹配位置 reg.lastIndex()
+var reg = /ab/g;
+var str = 'abababab'
+console.log(reg.exec(str))  //  ['ab', index: 0, input: 'abababab']
+console.log(reg.exec(str))  //  ['ab', index: 2, input: 'abababab']
+console.log(reg.exec(str))  //  ['ab', index: 4, input: 'abababab']
+console.log(reg.exec(str))  //  ['ab', index: 6, input: 'abababab']
+console.log(reg.exec(str))  //  null
+
+匹配aaaa bbbb cccc 1111这种形式: var reg = /(\w)\1\1\1/
+匹配aabb 22dd cc11 1122这种形式: var reg = /(\w)\1(\w)\2/
+
+str.search(reg)  //返回匹配到第一个位置index，没匹配到则返回-1
+str.match(reg)
+str.replace(reg,replaceStr)
+str.split(reg)
+
+var reg = /(\w)\1(\w)\2/;
+var str = 'aabb'  //要求输出'bbaa'
+console.log(str.replace(reg, '$2$2$1$1'))
+console.log(str.replace(reg, function($,$1,$2){
+	return $2+$2+$1+$1;
+}))
+
+var str = '10000456000';
+var reg = /(?=(\B)((\d{3})+$))/g;
+console.log(str.replace(reg, '.'));

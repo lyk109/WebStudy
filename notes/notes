@@ -1,0 +1,88 @@
+网页功能分工：
+框架：html (hyper-text markup language) 超文本标记语言
+样式：css (cascading style sheets) 折叠样式表
+行为：java script 脚本语言
+
+主流浏览器：内核
+	FireFox: Gecko
+	Chrome: Webkit/blink
+	IE: trident
+	Opera: Presto
+	Safari: Webkit
+
+同时下载html和css,异步加载
+
+浏览器面对长串父子选择器，从右向左条件查找。
+
+凡是带有inline的元素，都有文字特性，也就是空格回车会有分割符属性。
+	<img src="">
+	<img src="">
+	<img src="">
+	<img src="">
+
+开发思路：先定义样式，再应用到html属性中。
+
+<body></body> 默认margin:8px;
+
+position:relative;作为参照物。
+position:absolute;用来定位。
+
+bfc(block format context) ---- 触发
+	1、position: absolute/fixed;
+	2、display: inline-block;
+	3、float: left/right;
+	4、overflow: hidden;
+
+bug -------------- margin塌陷，垂直方向margin有问题。
+	margin-left相对于父级有效果，垂直方向margin父子元素结合到一起，取最大值。
+		.farther{
+			width:200px;
+			height:200px;
+			margin-left:200px;
+			margin-top:200px;
+		}
+		.child{
+			width:100px;
+			height:100px;
+			margin-left:100px;   //会在原有基础上右移100px
+			margin-top:100px;    //保持原有位置不变
+		}
+	解决：改变父级渲染规则，触发父级bfc。
+
+bug -------------- 两个兄弟元素垂直方向margin合并，取最大值。
+	.bro1{
+		background-color:red;
+		margin-bottom:100px;
+	}
+	.bro2{
+		background-color:green;
+		margin-top:100px;
+	}  //上下之间只保留一个100px margin
+	解决： 增加父级元素，再触发bfc。改变了html结构，因此不解决，通过计算弥补。
+
+position:absolute; float:left/right; 会从内部把元素转换为inline-block。
+
+没有css时，logo也能正常使用
+	<a href="http://www.baotao.com">淘宝网</a>
+	a{
+		display:inline-block;
+		text-decoration: none;
+		color: #424242;
+		width:190px;
+		height: 90px;
+		background-image: url(images/taobaoImg.jpg);
+		background-size: 190px 90px;
+
+		text-indent:190px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	另一种方法：
+	a{
+		display:inline-block;
+		width: 190px;
+		height: 0px;
+		padding-top: 90px;
+		background-image:url(images/taobaoImg.jpg);
+		background-size: 190px 90px;
+	}

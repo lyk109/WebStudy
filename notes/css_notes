@@ -1,0 +1,218 @@
+/*注释内容*/
+css:cascading style sheets
+
+html应用css的三种常用方式：
+	1、行间样式
+		<a href="www.baidu.com" style="text-decoration:none; color:#000;">这是一个超链接</a>
+	2、页面级CSS
+		<head>
+			<style type="text/css">
+				a{
+					text-decoration: none;
+					color: #000；
+				}
+			</style>
+		</head>
+	3、外部折叠样式表文件
+		<head>
+			<link rel="stylesheet" type="text/css" href="example.css">
+		<head>
+
+选择器1,[选择器2]...{属性名1：属性值1；属性名2: 属性值2;...}
+	!important //最重要的
+	id选择器：#id-value{}  //id一一对应
+	class选择器：.class-value{}  //class多对多
+	tag选择器：tag{}  
+	wildcard选择器：*{}  //用来初始化所有标签
+	attribute选择器：[id[="value"]]{}  //有id属性的都被选出
+
+父子选择器：
+	div span{}
+	div strong em{}
+	.wrappper .box em{}
+
+直接子元素选择器：
+	div > span{}
+
+并列选择器：
+	div.demo
+	div#price
+	div.demo#price
+
+css选择器权重计算（256进制）: 当值相同时，以最后出现的为准。
+	!important             Infinity
+	行间样式			   1000
+	id                     100
+	class|属性|伪类        10
+	标签|伪元素            1
+	通配符                 0
+
+字体：
+	font-size (字体高)
+	font-weight (字体加粗) lighter normal bold 100 200 300 ... 900
+	font-style: (字体样式) italic 
+	font-family: (字体) arial
+
+	颜色：
+	color: balck;
+	color: #000;      //每两位重复则可以简写
+	color: #000000;
+	color: rgb(0,0,0);
+
+元素盒子模型：
+	opacity: 0.5; //透明度
+	内容区域：
+		width: 100px;
+		height: 100px;
+		font-size: 16px;
+		line-height: 16px;  //单行文本所占高度
+		text-align: center; //left right ...
+		text-indent: 2em;  //首行缩进
+		text-decoration: line-through; //none underline overline
+		background-color: #000; //background相关属性包括内容和内边距
+		background-image:url(); //用图片当背景
+		background-size: 100px 60px; //背景图片大小
+		background-position:  center center;
+		background-repeat: no-repeat;
+	padding区域(内边距)：
+
+	border区域(外壁)：	
+		border: 1px solid black;
+		border-width:1px;
+		border-style:solid;
+		border-color:black;
+		border-top-color:transparent; 
+		border-radius:50%;
+	//练习画三角形
+
+ 当鼠标移入区域时变化：
+ 	cursor: pointer; //help move e-resize w-resize copy
+
+ 伪类：
+ 	a:hover{} 当鼠标移到元素内，产生的样式效果
+
+
+通常需要初始化：
+	*{
+		margin:0;
+		padding:0;
+	}
+	a{
+		text-decoration:none;
+		color:#424242
+	}
+	a img{
+		border:0px; 
+	}
+	ul{
+		list-style:none;
+	}
+
+定位：position  --------层模型
+	z-index:0; //z-index大的覆盖小的
+	绝对定位：脱离原来位置进行定位，每个absolute是一个新的层。如果父级中有定位元素，则相对于该元素定位，如果没有，相对于浏览器边框
+	.wrapper{
+		position:absolute;  
+		left: 100px;         //距离浏览器左边框距离
+		top: 100px;		     //距离浏览器上边框距离
+	}
+	相对定位：相对于自己原来的位置进行定位
+	.wrapper{
+		position:relative;   //保留原来位置进行定位，
+		left: 100px;         //默认位置右移100px
+		top: 100px;			 //默认位置下移100px
+	}
+	固定位置：位于页面固定位置
+	.ad{
+		width:200px;
+		height:100px;
+		position:fixed;
+		left:50%;
+		right:50%;
+		margin-left:-100px;
+		margin-right:-50px;
+	}
+
+两栏布局：
+	<div class="box1"></div>
+	<div class="box2"></div>
+
+	.box1{
+		position:absolute;
+		width:100px;
+		height:100px;
+		background-color:#fcc;
+	}
+
+	.box2{
+		height:100px;
+		background-color:#123;
+		margin-left:100px;
+	}
+	顺序有要求。
+
+伪元素：
+	span::before{
+		content:"";
+		display:"block";
+		clear:"both";
+	}
+	span::after{
+		content:"";
+		display:"block";
+		clear:"both";
+	}
+
+float浮动:
+	block元素不再独占一行，按规则排列。浮动元素产生了浮动流，对于块级元素不可见，对于触发了bfc的元素和文本类属性(inline,inline-block)元素以及文本是可见的。
+	对比示例1和示例2
+		示例1：
+			.box1{
+				float:left;
+				width: 200px;
+				height: 200px;
+				background-color: #fcc;
+				opacity:0.5;
+			}
+			.box2{
+				float:left;
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+			}
+		示例2：
+			.box1{
+				float:left;
+				width: 200px;
+				height: 200px;
+				background-color: #fcc;
+				opacity:0.5;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+			}
+	清除浮动流：
+		clear: both; //必须是快级元素
+
+文字溢出处理：
+	单行文字:
+	<p>2018.04.02(总持仓30%内）实时建议：黄金1330.8一线轻仓做多，止损L1328下方，目标：1334-1338区间以上建议仅供参考，风险自担</p>
+	.p{
+		width: 500px;
+		height: 20px;
+		line-height: 20px;
+		border: 1px solid black;
+		white-space: nowrap; //超出边界时不换行
+		overflow: hidden;
+		text-overflow: elipsis; // ...
+	}
+
+水平居中：
+	margin:0 auto;
+
+inline-block元素后文本对齐方式：
+	<span></span>hehe   hehe会与<span>元素底对齐
+	<span>haha</span>hehe  hehe会与haha底对齐
+	vertical-aline: 10px;

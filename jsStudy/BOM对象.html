@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div style="width: 100px;height: 100px;background-color: red"></div>
+	<script type="text/javascript">
+		//BOM（Browser Object Module）对象
+
+		// window对象，表示浏览器的一个实例
+		// 		javascript访问浏览器窗口的一个接口
+		// 		ECMAScript规定的Global对象
+		//		任何在全局中声明的变量、函数都会成为window对象的属性和方法
+
+		// 定义在window对象上的属性可以delete, 而直接定义在全局对象中的变量不可删除
+		//		var a = 'a';
+		//		var window.b = 'b';
+		//		delete a;  //返回false，IE9以下报错
+		//		delete b;  //返回true
+
+		//窗口位置
+		//窗口与屏幕左边和上边距离，各浏览器表现非常混乱
+		//window.screenLeft window.screenTop  (IE, Safari, Opera, Chrome)
+		//window.screenX  window.screenY  (Firefox, Safari, Chrome)
+
+		//窗口大小，各浏览器表现非常混乱
+		//innerWidth、innerHeight(viewport大小)
+		//outerWidth、outerHeight(浏览器大小)
+
+		//打开新的页面
+		//var new = window.open("http://www.baidu.com");
+		//new.close(); //关闭新打开的页面
+
+		//系统对话框
+		// alert()	confirm()	prompt()
+
+		var elem = document.getElementsByTagName('div')[0];
+		elem.addEventListener('click',function(){
+			alert(1);
+			alert(1);
+			alert(1);
+			alert(1);
+		},false)
+	</script>
+</body>
+</html>

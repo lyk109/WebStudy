@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//数组对象，属性，方法
+
+		//length属性
+		// var arr = [1, 2, 3.14, 'Hello', null, true];
+		// console.log(arr.length);		//16
+		// // 直接修改数组length属性
+		// var arr = [1, 2, 3];
+		// arr.length = 6;
+		// console.log(arr);		//[1,2,3,undefined,undefined,undefined]
+		// arr.length = 2;
+		// console.log(arr);		//[1,2]
+		// //清空数组方法：直接将数组的length属性设置为0
+		// arr.length = 0;
+
+		//数组索引
+		// //通过索引取值
+		// var arr = ['a','b','c'];
+		// console.log(arr[0]); //'a'
+		// console.log(arr[4]); //undefined 当索引超出范围时，返回undefined
+		// //通过索引赋值
+		// var arr = ['a','b','c']
+		// arr[1] = 'new';  //若在数组索引范围内，则将原值取代
+		// console.log(arr);	//['a', 'new', 'c']
+		// arr[4] = 'new';  //若超出数组范围，则数值length属性会发生改变，同时赋值
+		// console.log(arr.length);  //5
+		// console.log(arr)	//['a','new','c',undefined, 'new']
+		// //已知元素，求对应索引值
+		// var arr = [1,2,3,4,1];
+		// console.log(indexOf(1));  //0 返回第一个对应元素的索引值
+
+		//数组pop和push方法
+		// var arr = [1, 2];
+		// arr.push('a','b');//'b' [1,2,'a','b']
+		// arr.pop();		//'b' [1,2,'a']
+		// arr.pop();		//'a' [1,2]
+		// arr.pop();		//2   [1]
+		// arr.pop();		//1   []
+		// arr.pop();		//undefined  []
+
+		//数组shift和unshift方法
+		// var arr = [1,2];
+		// arr.unshift('a','b');  //4 ['a','b',1,2]返回length属性
+		// arr.shift();		//'a'  ['b',1,2]
+		// arr.shift();		//'b'  [1,2]
+		// arr.shift();		//1    [2]
+		// arr.shift();		//2    []
+		// arr.shift();		//undefined  []
+
+		//数组splice方法（生成子数组，同时改变原数组）
+		// var arr = [1,2,3,4,5,6,7]
+		// var arr1 = arr.splice(2,3,'a','b');
+		// console.log(arr,arr1);  //[1,2,'a','b',6,7]  [3,4,5]
+		// //利用splice删除数组中间某个值
+		// var arr = [1,2,3,4,5,6]
+		// arr.splice(3,1);  //删除索引为3的值
+		// //利用splice在数组中插入值
+		// var arr = [1,2,3,4,5,6]
+		// arr.splice(3,0,'a')  //在索引位置为3的地方插入'a'
+
+		//数组slice方法（生成子数组，不会改变原数组）
+		// var arr = [1,2,3,4,5,6]
+		// var newArr1 = arr.slice(3); //索引3到最后 [4,5,6]
+		// var newArr2 = arr.slice(3,5); //索引3到索引5，不包括5	[4,5]
+
+		//数组reverse方法，将原数组的顺序反向
+		// var arr = [1,2,3];
+		// arr.reverse();
+		// console.log(arr); //[3,2,1]
+
+		//数组sort方法，可自定义规则排序
+		//arr.sort(function(a,b){return a-b})
+		//函数返回值大于0，则交换a,b顺序；因此，当a > b时，交换a,b顺序，上面是升序排序。
+		// arr = [2,3,45,12,53,56,12,35,23];
+		// arr.sort(function(a,b){return b-a}); //[56, 53, 45, 35, 23, 12, 12, 3, 2]
+
+		//数组转化为字符串方法join
+		// var arr = ['ok','smile!'];
+		// var str1 = arr.join(); //"ok,smile!"  默认数组间元素以逗号(,)拼接.
+		// var str2 = arr.join('');  //"oksmile!"
+		// var str3 = arr.join('-'); //"ok-smile!"
+
+		//合并数组方法concat，不修改原数组，生成新数组
+		// var arr1 = [1,2,3];
+		// var arr2 = [4,5,6];
+		// var arr3 = arr1.concat(arr2); //[1,2,3,4,5,6]
+
+		//forEach方法，不产生新数组，arr.forEach(fn(a)).
+		//以每个数组元素为参数传入函数fn，并执行，不返回值。
+		// arr = [1,2,3,4];
+		// arr.forEach(function(a){console.log(a*a)}); // 1  4  9  16  25
+
+		//every方法，返回一个boolean值，arr.every(fn(a))，根据fn(a)的返回值判断
+		//逻辑:使用fn函数判断数组元素是否满足某种属性，若所有元素都满足，则every返回true。
+		// arr1 = [1,2,3,4];
+		// arr1.every(function(a){return typeof(a) == 'number'});  //true
+		// arr2 = [1,2,3,'4']
+		// arr2.every(function(a){return typeof(a) == 'number'}); //false
+
+		//some方法，返回一个boolean值，arr.every(fn(a))，根据fn(a)的返回值判断
+		//逻辑：和every类似，但是只要数组中有元素满足，则返回为true
+		// arr1 = [1,2,3,'4'];
+		// arr1.some(function(a){return typeof(a) == 'number'}); //true
+		// arr2 = ['1','2','3','4']
+		// arr2.some(function(a){return typeof(a) == 'number'}); //false
+
+		//reduce方法，arr.reduce(fn(a,b))，迭代计算
+		// arr = [1,2,3,4]
+		// arr.reduce(function(a,b){return a+b}); //10
+		// arr.reduce(function(a,b){return a**2+b}) //148
+
+		//reduceRight，和reduce相同，迭代方向相反
+
+		//map方法，会生成新数组，arr.map(fn(a))
+		//逻辑：以数组每个元素为参数传入fn得到返回值，返回值组成新数组
+		// arr = [1,2,3,4,5]
+		// newArr = arr.map(function(a){return a*a}); //[1,4,9,16,25]
+
+		//filter方法，会生成新数组，arr.filter(fn(a))
+		//逻辑，用fn函数对数组中的元素进行判断，过滤出符合要求的元素组成新数组
+		// arr = [1,23,5,'ad',undefined, 'a','3',8]
+		// arr.filter(function(a){return typeof(a) == 'number'});  //[1,23,5,8]
+
+	</script>
+</body>
+</html>

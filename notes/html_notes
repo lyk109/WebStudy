@@ -1,0 +1,111 @@
+<!--注释内容-->
+html: hyper-text markup language
+
+html页面基础结构：
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+</head>
+<body></body>
+</html>
+ 
+根标签：
+<html lang="en"></html>   //告诉搜索引擎网站是关于英文的 SEO(search engine optimization)搜索引擎优化技术
+ 
+内部结构化标签：
+展现给浏览器 
+	<head>
+ 		<meta charset="utf-8">    //编码字符集 gb2312(简体中文) gbk(简体+繁体) unicode utf-8(万国码)
+ 		<meta name="keywords" content="keyword1,keyword2,keyword3">
+ 		<meta name="description" content="clothes for babies">
+ 		<title>这里的内容会显示在浏览器标签头</title>
+ 		<link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+ 		<link rel="stylesheet" type="text/css" href="test.css">
+ 	</head>
+展现给用户
+	<body>
+	</body>
+
+常用标签：
+	<p></p> 成段展示
+	<h1></h1> ~ <h6></h6> 成段展示，更改字体大小，加粗
+	<strong></strong> 加粗
+	<em></em> 斜体
+	<del></del> 默认style="text-decoration: line-through;"
+	<address></address> 默认style=""
+
+行级标签：内容决定元素所占位置，不可以通过css改变宽高         display: inline;
+	<span></span> <em></em> <strong></strong> <a></a>
+
+块级标签：占满整行，可以通过css改变宽高                       display: block;
+	<div></div> <p></p> <ul></ul> <li></li> <ol></ol> <form></form>
+
+行级块元素：内容决定大小，可以通过css改变宽高                 display: inline-block;
+	<img src="xxx.img">
+
+
+最常用标签：
+	充当容器（结构化，绑定操作）：
+		<div></div> //独占一行
+		<span></span>
+	
+	单标签：
+	<br> //换行
+	<hr> //加分割线 
+	<image src="" alt="" title=""> //插入图片：网上url，本地相对路径，本地绝对路径。 alt当图片无法获取时的文字替代。 title：图片提示符，鼠标移到图片上时展示的文字信息。
+
+	有序列表：
+	<ol type="a"(1,a,A,i,I) reversed="reversed" start="4"> 
+		<li></li>
+		<li></li>
+	</ol>
+
+	无序列表：
+	<ul type="disc"(circle,square)>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	表格：
+	<table>
+		<caption></caption>  //表头
+		<tr></tr>   //table row
+			<th></th>  //table head
+			<td></td>  //table data
+	</table>
+
+	超链接标签：
+	<a href="" target="_blank"></a> //(anchor)a标签不能包含a标签，href:hyper-text reference. 
+	<a href="#"></a> //找到页面中#后对应id元素位置。
+	<a href="mailto:1095909109@qq.com"></a> //发邮件
+	<a href="tel:13122356002"></a>  //打电话
+	<a href="javascript:while(1){alert('让你手欠')}"></a>  //协议限定符
+
+	表单标签：
+	<form method="get" action="" enctype="multipart/form-data"> //method发送数据方式，action接收方地址，method为post时才可以使用enctype
+		<select name="city">
+			<option value="beijng">beijing</option>
+			<option>shanghai</option>
+			<option>shenzhen</option>
+		</select>   //以标签中value为准，若value没有标明，以标签内容为值
+		<p>
+			username:<input type="text" name="username" value="input username" onfocous="this.value=''" 
+			onblur="this.value='input username'">
+		</p>
+		<p>password:<input type="password" name="password" value="input password"></p>
+		<p>
+			Jack<input type="radio" name="star" value="jack" checked="checked">
+			Leo<input type="radio" name="star" value="leo">
+			Gery<input type="radio" name="star" value="gery">            //单选框,type="checkbox"则为复选框。
+		</p>
+		<p><textarea></textarea></p>  //可输入多行文字
+		<p><input type="submit" value="提交"></p>    //提交表单
+	</form>
+	//想要让form表单传送数据必须要有数据名和数据值来告诉对象传输的是什么数据
+
+代码文本中回车空格表示英文单词分隔符，多个空格表示的还是一个分割符，因此在浏览器中只能显示一个。
+（&nbsp;可代替实际空格  &lt;可代替'<'  &gt;可代替'>' ）————> html编码特殊字符
+
+语义化分段：<header> <nav> <article> <section> <aside> <footer>

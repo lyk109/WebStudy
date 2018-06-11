@@ -1,0 +1,181 @@
+浏览器简述：
+	内核：渲染引擎（语法规则和渲染html+css）+ js引擎 + 其他模块
+		  ie---trident firefox---gecko chrome---blink safari---webkit opera---presto
+	Mosaic: 第一个获得普遍使用能够显示图片的网页浏览器（1993年）
+	Netscape Navigator: 1994年
+	JS引擎：2001年，ie6实现JS引擎优化和分离 -> 2008年，Chrome代号V8，可把JS代码直接转为机械码来执行
+
+JavaScript  -----  诞生于1996年，原名livescript
+	特点      -----  解释性语言、单线程、区分大小写
+	三大部分  -----  单线程
+	标准      -----  ECMAScript
+
+引入js代码的方式：
+	页面级js: <script type="text/javascript">js代码区</script>
+	页面外js: <script type="text/javascript" src="js代码路径"></script>
+
+注释： //单行注释
+	   /*多行
+	   	注释*/
+
+数据类型：
+	原始值（Number Boolean String Undefined null）
+	引用值（array object function date RegExp）
+	typeof操作符返回值 (undefined number string boolean object function)
+	undefined: 未经赋值声明的默认值，不需要显式赋值
+	null: 指向一个空的对象指针，需要显式赋值
+
+标识符：变量/函数/属性的名字或函数的参数
+	字母、数字、下划线、$组成，字母、下划线、$符作为开头。
+	小驼峰命名规则：studentName classNumber
+
+运算符：
+	+	从左至右，若都是数值则直接相加。若出现字符串，则转为字符串拼接。
+		var a = 'a' + 'b';  //'ab'
+		var b = 'a' + 1 + 1; //'a11'
+		var c = 1 + 1 + 'a' + '1' + '1'; //'2a11'
+
+	-   从左至右，按数值运算方式计算，对于非数值先进行隐式转换为数值
+
+	/ % 除法与求模，按数值运算方式计算，对于非数值先进行隐式转换为数值
+		var a = 1/0 //Infinity
+		var b = 1/'1' //1
+		var c = 5%2  //1
+
+	*	乘法，按数值运算方式计算，对于非数值先进行隐式转换为数值
+
+	++	a++先执行，再自加，a--先自减，再执行。
+		var a = '11';
+		console.log(a++); //11
+		console.loa(a); //12
+		console.log(++a); //13
+		console.log(a); //13
+
+	--	同++
+
+	>(大于) >=(大于或等于) <(小于) <=(小于或等于)
+		对于字符串，按位转为ASCII码对应数值比较
+
+	==(等于) ===(绝对等于) !=(不等于) !==(绝对不等于)
+		undefined == 0  //false
+		null == 0  //false
+		NaN == NaN //false
+		undefined == null  //true
+		undefined === null  //false
+		两个不同的对象永远不相等。
+
+	&&	与，短路运算，返回的结果为其中之一
+		0 && 1  //0
+		undefined && 1 //undefined
+		null && 1 //null
+		1 && undefined //undefiend
+		(function(){console.log('f1')}()) && (function(){console.log('f2')}()) //f2
+
+	||	或，短路运算，返回的结果是其中之一，参考&&规则
+
+	三目运算符：表达式1 ？ 表达式2 : 表达式3
+		若表达式1为真，则返回表达式2的结果，否则返回表达式3的结果
+		null == undefined ? 'yes' : 'no'		//'yes'
+
+注：|| 和 && 和 三目运算符可以用来替代if else简化代码。
+
+经过var声明的变量无法使用delete删除，未经var声明的变量可使用delete删除
+
+函数：
+	函数声明  function foo(a,b,c...) {}     --- arguments = [a,b,c...]
+	函数表达式  var test = function foo() {}  --- test.name = foo
+	匿名表达式	var test = function () {}    --- test.name = test
+	函数内调用本身 arguments.callee();  --- 匿名函数递归调用
+立即执行函数
+	函数表达式立即执行: +foo() (foo()) -foo() !foo()
+
+预编译：（语法分析-->预编译-->解释执行）发生在执行前一刻
+	1.创建一个AO(Activation Object)对像。
+	2.将形参与声明的变量作为AO属性名添加到AO对象。
+	3.形参与实参相统一，即将实参的值赋值给相应的形参。
+	4.声明的函数作为AO对象的属性名添加到AO对象，同时将函数体赋值给该属性
+
+作用域链：aAO --> bAO --> GO
+	未经声明直接赋值的变量保存在GO中，归window属性
+	GO{
+	 	this: window,
+	 	window: (object),
+	 	document: (object)
+	 }
+	AO{
+	 	this: window,
+	 	arguments: []
+	 }
+
+with语句：会使相应代码块的作用域链发生变化
+	with(a){代码块}：额外代码块中变量作用域链最顶端添加a的执行期上下文
+	不建议使用with语句（es5.0严格模式禁用）
+	影响性能：使得指定对象为首要变量查询地，若查询的变量不属于该对象，查找过程消耗
+			  时间将大大增加。
+	例：with内部可能会不小心把obj中的属性值改变
+		var obj = {
+			name: 'obj',
+			age: undefined
+		}
+		var name = 'window';
+		with(obj){
+			var name = 'with';
+			var age = 1;
+			console.log(name);  //'with'
+			console.log(age);  //1
+		}
+		console.log(obj.name);  //'with'
+
+闭包：
+	内部函数返回到外部产生闭包，使得函数执行完之后其执行期上下文不被销毁
+	程序例子：
+		function a() {
+ 			var num = 100;
+ 	 		function b() {
+				num++;
+ 				console.log(num);
+ 			}
+ 			return b;
+ 		}
+ 		var demo = a();
+ 		demo();
+ 		demo();
+闭包作用：
+	1、实现公有变量。（eg:函数累加器）
+	2、可以做缓存存储结构。（eg:eater）
+	3、可以实现封装，属性私有化。（eg:Person()）
+	4、模块化开发，防止污染全局变量。
+闭包缺点：
+	当内部函数保存到外部时，原有作用域链不释放导致内存泄漏
+
+EMACScript引入了Strict mode（严格模式）的概念。
+	启用严格模式，在脚本顶部添加："use strict";
+	严格模式：
+		eval语句不能使用
+		with语句不能使用
+		arguments.callee不能使用
+		变量赋值前必须声明
+		局部this必须先赋值
+
+日期对象Date:
+	var date = new Date()  //获取当前时间时间对应的日期对象
+	date.getFullYear()		//获取年
+	date.getMonth() + 1		//获取月
+	date.getDate()			//获取日
+	date.getHours()			//获取时
+	date.getMinutes()		//获取分
+	date.getSeconds()		//获取秒
+	date.getTime()			//时间戳，1970-01-01 00:00:00到date时间的毫秒数
+
+定时器：定时器在设置时，可以通过一个数字来标记自身，用变量来承接，方便后续清除。
+	setInterval		clearInterval(timer1)
+		var timer1 = setInterval(function(){}, time)  //这里timer1为一个数字
+		1、每隔time毫秒执行一次function，其时间间隔不是准确的。
+		2、setInterval的回调函数并不是到时就立即执行，而是等系统计算资源空闲下来后才会
+		执行，而下一次触发时间则是在回调函数执行完毕后才会开始计时。所以setInterval内的执行
+		的计算过于耗时，或者有其他耗时任务在执行时，setInterval的计时会越来越不准。
+	setTimeout		clearTimeout(timer)
+		var timer2 = setTimeout(function(){}, time)  //timer2是一个数字
+		1、function推迟time毫秒执行
+	function可以替换成字符串形式的代码块（性能损失，不推荐）
+		var timer3 = setInterval('console.log('another way')',1000);

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="1">
+		<div id="11"></div>
+		<div id="12"></div>
+	</div>
+	<div id="2">
+		<div id="21"></div>
+		<div id="22"></div>
+	</div>
+	<div id="3"></div>
+	<script>
+		//DOM(Document Object Model)定义了表示和修改文档所需的方法
+		//DOM对象由浏览器厂商定义，用来操作html和xml功能的一类对象集合
+
+		//document代表整个文档，通过document获得的元素集合是类数组
+		//获取元素方法：
+			// document.getElementById('idName');
+			// document.getElementsByTagName('tagName');
+			// document.getElementsByClassName('className');
+			// document.querySelector('css selector');		//致命缺点，非实时
+			// document.querySelectorAll('css selector');
+
+		//document节点：
+		//		元素节点 --- 1
+		//		属性节点 --- 2
+		//		文本节点 --- 3
+		//		注释节点 --- 8
+		//		document --- 9
+		//		DocumentFragment --- 11
+		//	节点属性：
+		//		nodeName；字符串,元素节点---标签名大写、文本节点---'#text'、
+		//				  注释节点---'#comment'、document---'#document'.
+		//		nodeType: 获取节点的类型，上面数字表示。例如，元素节点该属性为1
+		//		attributes: 只有元素节点该属性
+		//		hasChildNodes: 方法，判断是否有子节点（true/false）
+		//	获取相关元素与相关节点；
+		//		获取节点：parentNode
+		//				  previousSibling nextSibling
+		//				  firstChild lastChild childNodes
+		//		获取元素：parentElement
+		//				  previousElementSibling nextElementSibling
+		//				  firstElementChild lastElementChild children
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//对象
+
+		//创建方法：
+			//字面量：
+				// var person{
+				// 	name: 'Smith',
+				// 	age: 18,
+				// 	drink: function(){
+				// 		console.log('drinking!');
+				// 	}
+				// }
+			//构造函数：
+				// 系统自带：new Object(); new Array(); new Number(); new Boolean();
+				// 			 new String(); new Date();
+			//自定义构造函数：
+				// Person.prototype = Object.prototype
+				// function Person(name,age){
+				// 	this.name = name;
+				// 	this.age = age;
+				// }
+				// var person = new Person();
+			//Object.create(prototype);
+
+		//对象继承
+			// function Person(name,age){
+			// 	this.name = name;
+			// 	this.age = age;
+			// }
+
+			// function Teacher(name,age,subject){
+			// 	Person.call(this,name,age);
+			// 	this.subject = subject;
+			// }
+			// Teacher.prototype = Object.create(Person.prototype);
+			// Teacher.constructor = Teacher;
+			// // 不要使用Teacher.prototype = Person.prototype，这样的引用关系会使得
+			// // Teacher.prototype修改时，Person.prototype也会修改
+	</script>
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="" type="">
+	<link rel="stylesheet" href="jsTests.css">
+	<title>Apply javaScript example!</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="case1"></div>
+	<div class="case2"></div>
+	<script type="text/javascript">
+
+		//********************************************************
+		// //1.求输出
+		// function fn(a,b){
+		// 	console.log(a);
+		// 	console.log(b);
+		// 	var b = 234;
+		// 	console.log(b);
+		// 	a = 123;
+		// 	console.log(a);
+		// 	var a;
+		// 	b = 234;
+		// 	var b = function(){};
+		// 	console.log(a);
+		// 	console.log(b);
+		// }
+		// fn(1);
+
+		// //2.求输出
+		// console.log(test);   //f test(){....}
+		// function test(test){
+		// 	console.log(test);  //f test(){}
+		// 	var test = 234;
+		// 	console.log(test);  //234
+		// 	function test(){};
+		// }
+		// test(1);
+		// var test = 123;
+
+		// //3.求输出
+		// var x = 1;
+		// if(function f(){}){
+		// 	x += typeof(f);
+		// }
+		// console.log(x);
+		//********************************************************
+
+
+		//********************************************************
+		//斐波那契数列
+		//程序一
+		// function fibonacci(n){
+		// 	var first = 1;
+		// 	var second = 1;
+		// 	if(n <= 2){
+		// 		result = 1;
+		// 	}else{
+		// 		for(var i = 3; i <= n; i++){
+		// 			result = first + second;
+		// 			first = second;
+		// 			second = result;
+		// 		}
+		// 	}
+		// 	return result;
+		// }
+		//程序二
+		// function fibonacci(n){
+		// 	if(n == 1 || n == 2){
+		// 		return 1;
+		// 	}else{
+		// 		return fibonacci(n-2)+fibonacci(n-1);
+		// 	}
+		// }
+		//********************************************************
+
+
+		//********************************************************
+		//求n阶乘
+		//程序一
+		// function factoria(n){
+		// 	var result = 1;
+		// 	for(var i = 1; i <= n; i++){
+		// 		result *= i;
+		// 	}
+		// 	return result;
+		// }
+		//程序二 --- 递归调用，执行慢，复杂程序不用。
+		// function factoria(n) {
+		// 	if(n == 0){
+		// 		return 1;
+		// 	}else{
+		// 		return n*factoria(n-1);
+		// 	}
+		// }
+		//********************************************************
+
+
+		//********************************************************
+		//将数字转化为大写数字（例：输入：123456789 输出：壹亿贰仟叁佰肆拾伍萬陆仟柒佰捌拾玖）
+		// //功能函数主体
+		// function transferNumToZh(n){
+		// 	n1 = (Math.floor(n/100000000))%10000;
+		// 	n2 = (Math.floor(n/10000))%10000;
+		// 	n3 = n%10000;
+		// 	n = String(n);
+		// 	var length = n.length;
+		// 	var result = '';
+		// 	if(n1 == 0 && n2 == 0){
+		// 		result += transferUnderFourDigitToZh(n);
+		// 		return result;
+		// 	}else if(n1 == 0 && n2 != 0){
+		// 		result += transferUnderFourDigitToZh(n2) + '萬';
+		// 		if(n3 == 0){
+		// 			return result;
+		// 		}else if(Math.floor(n3/1000) == 0){
+		// 			result += '零' + transferUnderFourDigitToZh(n3);
+		// 			return result;
+		// 		}else{
+		// 			result += transferUnderFourDigitToZh(n3);
+		// 			return result;
+		// 		}
+		// 	}else if(n1 != 0 && n2 == 0){
+		// 		result += transferUnderFourDigitToZh(n1) + '亿';
+		// 		if(n3 != 0){
+		// 			result += '零' + transferUnderFourDigitToZh(n3);
+		// 			return result;
+		// 		}else{
+		// 			return result;
+		// 		}
+		// 	}else{
+		// 		result += transferUnderFourDigitToZh(n1) + '亿';
+		// 		if(Math.floor(n2/1000) == 0){
+		// 			result += '零' + transferUnderFourDigitToZh(n2) + '萬';
+		// 		}else{
+		// 			result += transferUnderFourDigitToZh(n2) + '萬';
+		// 		}
+		// 		if(n3 == 0){
+		// 			return result;
+		// 		}else if(Math.floor(n3/1000) == 0){
+		// 			result += '零' + transferUnderFourDigitToZh(n3);
+		// 			return result;
+		// 		}else{
+		// 			result += transferUnderFourDigitToZh(n3);
+		// 			return result;
+		// 		}
+
+		// 	}
+		// }
+		// //被调用函数一：实现四位及四位以下的转换
+		// function transferUnderFourDigitToZh(n){
+		// 	n = String(n);
+		// 	var result = '';
+		// 	var length = n.length;
+		// 	switch(length){
+		// 		case 1:
+		// 			result += transferSingleDigitToZh(n);
+		// 			return result;
+		// 		case 2:
+		// 			result += transferSingleDigitToZh(n[0]) + '拾';
+		// 			if(n[1] != 0){
+		// 				result += transferSingleDigitToZh(n[1]);
+		// 				return result;
+		// 			}else{return result}
+		// 		case 3:
+		// 			result += transferSingleDigitToZh(n[0]) + '佰';
+		// 			if(n[1] == 0){
+		// 				if(n[2] == 0){
+		// 					return result;
+		// 				}else{
+		// 					result += transferSingleDigitToZh(n[1]);
+		// 					result += transferSingleDigitToZh(n[2]);
+		// 					return result;
+		// 				}
+		// 			}else if(n[2] == 0){
+		// 				result += transferSingleDigitToZh(n[1]) + '拾';
+		// 				return result;
+		// 			}else{
+		// 				result += transferSingleDigitToZh(n[1]) + '拾';
+		// 				result += transferSingleDigitToZh(n[2]);
+		// 				return result;
+		// 			}
+		// 		case 4:
+		// 			result += transferSingleDigitToZh(n[0]) + '仟';
+		// 			if(n[1] == 0 && n[2] == 0 && n[3] == 0){
+		// 				return result;
+		// 			}else if(n[1] == 0 && n[2] == 0 && n[3] !=0){
+		// 				result += '零' + transferSingleDigitToZh(n[3]);
+		// 				return result;
+		// 			}else if(n[1] == 0 && n[2] != 0 && n[3] ==0){
+		// 				result += '零' + transferSingleDigitToZh(n[2]) + '拾';
+		// 				return result;
+		// 			}else if(n[1] == 0 && n[2] != 0 && n[3] !=0){
+		// 				result += '零' + transferSingleDigitToZh(n[2]) + '拾';
+		// 				result += transferSingleDigitToZh(n[3])
+		// 				return result;
+		// 			}else if(n[1] != 0 && n[2] == 0 && n[3] ==0){
+		// 				result += transferSingleDigitToZh(n[1]) + '佰';
+		// 				return result;
+		// 			}else if(n[1] != 0 && n[2] == 0 && n[3] !=0){
+		// 				result += transferSingleDigitToZh(n[1]) + '佰零';
+		// 				result += transferSingleDigitToZh(n[3]);
+		// 				return result;
+		// 			}else if(n[1] != 0 && n[2] != 0 && n[3] ==0){
+		// 				result += transferSingleDigitToZh(n[1]) + '佰';
+		// 				result += transferSingleDigitToZh(n[2]) + '拾';
+		// 				return result;
+		// 			}else{
+		// 				result += transferSingleDigitToZh(n[1]) + '佰';
+		// 				result += transferSingleDigitToZh(n[2]) + '拾';
+		// 				result += transferSingleDigitToZh(n[3]);
+		// 				return result;
+		// 			}
+		// 		}
+		// }
+		// //被调用函数二：将单个数字转化为大写
+		// function transferSingleDigitToZh(n){
+		// 	switch(n){
+		// 		case '0':;
+		// 		case 0: return '零';break;
+		// 		case '1':;
+		// 		case 1 : return '壹';break;
+		// 		case '2':;
+		// 		case 2 : return '贰';break;
+		// 		case '3':;
+		// 		case 3 : return '叁';break;
+		// 		case '4':;
+		// 		case 4 : return '肆';break;
+		// 		case '5':;
+		// 		case 5 : return '伍';break;
+		// 		case '6':;
+		// 		case 6 : return '陆';break;
+		// 		case '7':;
+		// 		case 7 : return '柒';break;
+		// 		case '8':;
+		// 		case 8 : return '捌';break;
+		// 		case '9':;
+		// 		case 9 : return '玖';break;
+		// 	}
+		// }
+		// //被调用函数二替代
+		// function transferSingleDigitToZh(n){
+		// 	var num = Number(n);
+		// 	var numArr = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+		// 	return(numArr[num]);
+		// }
+		//********************************************************
+
+
+
+		//********************************************************
+		//知识点：闭包
+		//内部函数返回到外部产生闭包，使得函数执行完之后其执行期上下文不被销毁
+		//程序例子：
+		// function a() {
+		// 	var num = 100;
+		// 	function b() {
+		// 		num++;
+		// 		console.log(num);
+		// 	}
+		// 	return b;
+		// }
+		// var demo = a();
+		// demo();
+		// demo();
+		//闭包作用：
+		//		1、实现公有变量。（eg:函数累加器）
+		//		2、可以做缓存存储结构。（eg:eater）
+		//		3、可以实现封装，属性私有化。（eg:Person()）
+		//		4、模块化开发，防止污染全局变量。
+		//闭包缺点：
+		//		当内部函数保存到外部时，原有作用域链不释放导致内存泄漏。
+		//********************************************************
+
+
+		//********************************************************
+		//知识点：匿名函数,执行完立即销毁
+		//程序1
+		// (function (a,b,c){
+		// 	var a = 123;
+		// 	var b = 234;
+		// 	console.log(a);
+		// }(1,2,3));
+
+		//程序2 问输出（阿里）
+		// function test(){
+		// 	console.log(111);
+		// }
+		// (1,2,3,4);
+
+		//程序3：思考！！！！ 立即执行函数来承接，产生各自执行期上下文
+		//非常重要！！！
+		// function test() {
+		// 	var arr = [];
+		// 	for(var i = 0; i < 10; i++){
+		// 		(function (j){
+		// 			arr[j] = function() {
+		// 				document.write(j + " ");
+		// 			}
+		// 		}(i));
+		// 	}
+		// 	return arr;
+		// }
+		// a = test();
+		// for(var i = 1; i < a.length; i++){
+		// 	a[i]();
+		// }
+
+		//程序4  (a,b) 都会执行，但是返回后者
+		// var f = (
+		// 	function f(){
+		// 		return "1";
+		// 	},
+		// 	function g(){
+		// 		return 2;
+		// 	}
+		// )();
+		//********************************************************
+
+
+
+		//********************************************************
+		// 1.一个字符串[a-z]组成，请找出该字符串第一个只出现一次的字母
+
+		// 思路：1、定义一个函数，传入的参数为一个字符串。
+		// 	  2、定义一个对象，来存储字符及其出现次数。
+		// 	  3、计算字符串中每个字符出现的次数。
+		// 	  	遍历字符串中字符-->若字符在对象中不存在，则将其作为对象属性名，相应属性值赋值为1；若存在，则属性值+1
+		// 	  4、返回对象中第一个属性值为1的属性命既所求。
+
+		//程序
+		// function findAlpha(str){
+		// 	var obj = {};
+		// 	var len = str.length;
+		// 	for(var i = 0; i < len; i++){
+		// 		if(obj[str[i]]){
+		// 			obj[str[i]]++;
+		// 		}else{
+		// 			obj[str[i]] = 1;
+		// 		}
+		// 	}
+		// 	console.log(obj)
+		// 	for(var prop in obj){
+		// 		if(obj[prop] == 1){
+		// 			return prop;
+		// 		}
+		// 	}
+		// }
+		// str = 'asdfghjkl';
+		// console.log(findAlpha(str));
+		//********************************************************
+
+
+		//********************************************************
+		// 2.字符串去重。
+
+		//思路：1、定义一个函数，传入参数为一个字符串
+		//      2、定义一个对象，用来存储已经出现过的字符
+		//		3、定义一个数组，用来存储去重后的字符串字符
+		//		4、遍历字符串，若字符在对象中不存在，则将其作为属性值添加到对象中，赋值为1。同时，将其追加到数组中。若存在与对象中，不做任何操作。
+		//		5、将数组转化为字符串，返回出来。
+
+		//程序
+		// function uniqueString(str){
+		// 	var obj = {};
+		// 	var arr = [];
+		// 	len = str.length;
+		// 	for(var i = 0; i < len; i++){
+		// 		if(!obj[str[i]]){
+		// 			obj[str[i]] = 1;
+		// 			arr.push(str[i]);
+		// 		}
+		// 	}
+		// 	return arr.join('');
+		// }
+		//********************************************************
+
+
+		//********************************************************************
+		//编程，写计时器，到1分钟停止
+		// i = 0;
+		// var timer = setInterval(function(){
+		// 	if(i <= 60){
+		// 		console.log(i)
+		// 		i++;
+		// 	}else{
+		// 		clearInterval(timer)
+		// 	}
+		// },1000)
+		//********************************************************************
+
+		//********************************************************
+		//笔试题：使用原生js，addEventListener，给每个元素绑定一个click事件，输出他们的顺序。
+		// <ul>
+		// 	<li>a</li>
+		// 	<li>b</li>
+		// 	<li>c</li>
+		// 	<li>d</li>
+		// </ul>
+
+		// function test(){
+		// 	var liCollection = document.getElementsByTagName('li');
+		// 	for(var i = 0; i < liCollection.length; i++){
+		// 		(function (j){
+		// 			liCollection[j].onclick = function(){
+		// 				console.log(j);
+		// 			}
+		// 		}(i))
+		// 	}
+		// }
+		// test();
+		//*******************************************************
+
+
+		//*****************************************************
+		//dom(document object model)操作
+		//dom定义了表示和修改文档所需的方法，dom对象即为宿主对象，由浏览器厂商定义，用来操作html和xml功能的一类对象的集合。
+		//案例一：通过键盘控制方块移动
+		// var div = document.getElementsByNamClassName('case1')[0];
+		// div.style.width = '100px';
+		// div.style.height = '100px';
+		// div.style.position = 'absolute';
+		// div.style.backgroundColor = 'red';
+		// div.style.left = '0';
+		// div.style.top = '0';
+		// document.onkeydown = function(e){
+		// 	switch(e.which){
+		// 		case 37:
+		// 			div.style.left = parseInt(div.style.left) - 1 + 'px'; break;
+		// 		case 38:
+		// 			div.style.top = parseInt(div.style.top) - 1 + 'px'; break;
+		// 		case 39:
+		// 			div.style.left = parseInt(div.style.left) + 1 + 'px'; break;
+		// 		case 40:
+		// 			div.style.top = parseInt(div.style.top) + 1 + 'px'; break;
+		// 	}
+		// }
+		//案例二：方块的加速移动
+		// var div = document.getElementsByClassName('case2')[0];
+		// div.style.display = 'block';
+		// div.style.width = '100px';
+		// div.style.height = '100px';
+		// div.style.position = 'absolute';
+		// div.style.backgroundColor = 'red';
+		// div.style.top = '0';
+		// div.style.left = '0';
+		// var  speed = 1;
+		// var timer = setInterval(function(){
+		// 	for(var i = 0; i < speed; i++){
+		// 		setTimeout(function(){
+		// 			div.style.top = parseInt(div.style.top) + 1 +'px';
+		// 			div.style.left = parseInt(div.style.left) + 1 +'px';
+		// 		},parseInt(100/speed))
+		// 	}
+		// 	speed++;
+		// 	if(parseInt(div.style.left) > 1000){
+		// 		clearInterval(timer);
+		// 	}
+		// }, 100);
+		//******************************************************************
+
+
+		//***********************************************************************************
+		// 	document代表整个文档，获得的都是类数组
+		// 		document.getElementById('idName')
+		// 		document.getElementsByTagName('tagName')
+		// 		document.getElementsByClassName('className')
+		// 		document.querySelector() //致命缺点，非实时
+		// 		document.querySelectorAll()
+		//	document节点：
+		//		元素节点 --1
+		//		属性节点 --2
+		//		文本节点 --3
+		//		注释节点 --8
+		//		document --9
+		//		DocumentFragment --11
+		//	节点的4个属性
+		//		nodeName: 元素标签名或者#text,#comment
+		//		nodeValue: 只有文本节点和注释节点有
+		//		nodeType：该节点类型，只读。返回上面的数字。
+		//		attributes：element节点属性集合
+		//		hasChildNodes: 有子节点（true/false）
+		// 	获取相关节点与相关元素的方法
+		//		节点：parentNode childNodes firstChild lastChild nextSibling previousSibling
+		// 		元素：parentElement  children  childElementCount  firstElementChild
+		//			  lastElementChild  nextElementSibling  previousElementSibling
+		//		获取元素方法除了children，存在兼容性问题
+		//***********************************************************************************
+
+
+		//************************************************************************
+		//								 DOM结构树
+		//					Node
+		//	  Document 		 CharacterData			Element 		Attr
+		// HTMLDocument		Text 	comment 	  HTMLElement
+
+		//getElementById方法定义在Document.prototype上，即Element节点上不能使用
+		//getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document不能使用（xml document,Element）
+		//getElementsByTagName方法定义在Document.prototype上和Element.prototype上
+		//getElementsByClassName, querySelector, querySelectorAll在Document.prototype, Element.prototype类中均有定义
+
+		//编程：返回一个元素的所有元素节点
+		// var div = document.getElementsByTagName('div')[0];
+		// function retElementChild(node){
+		// 	var result = {
+		// 		length: 0,
+		// 		push: Array.prototype.push,
+		// 		splice: Array.prototype.splice
+		// 	};
+		// 	var child = node.childNodes;
+		// 	var len = child.length;
+		// 	for(var i = 0; i < len; i++){
+		// 		if(child[i].nodeType === 1){
+		// 			result.push(child[i]);
+		// 		}
+		// 	}
+		// 	return result;
+		// }
+
+		//编程作业1：遍历元素节点树（在原型链上编程）
+		// Element.prototype.ergordicElement = function () {
+		// 	allElements = {
+		// 		length: 0,
+		// 		push: Array.prototype.push,
+		// 		splice: Array.prototype.splice
+		// 	}
+		// 	function foo(element){
+		// 		var children = element.children
+		// 		var len = children.length
+		// 		for(var i = 0; i < len; i++){
+		// 			allElements.push(children[i]);
+		// 			if(children[i].children){
+		// 				foo(children[i]);
+		// 			}
+		// 		}
+		// 	}
+		// 	foo(this);
+		// 	return allElements;
+		// }
+
+		//编程作业2：封装函数，返回元素e的第n层祖先元素节点
+
+		//编程作业3：封装函数，返回元素e的第n个兄弟元素节点，n为正，返回后面的兄弟节点，n为负，返回前面的，n为0，返回自己。
+		// function retSibling(e,n){
+		// 	while(e && n){
+		// 		if(n > 0){
+		// 			e = e.nextElementSibling;
+		// 			n--;
+		// 		}else{
+		// 			e = e.previousElementSibling;
+		// 			n++;
+		// 		}
+		// 	}
+		// 	return e;
+		// }
+
+		//编程作业4：编辑函数，封装myChildren功能，解决以前部分浏览器的兼容性问题
+		// Element.prototype.myChildren = function (){
+		// 	var myChildren = {
+		// 		length: 0,
+		// 		push: Array.prototype.push,
+		// 		splice: Array.prototype.splice
+		// 	}
+		// 	var childNodes = this.childNodes;
+		// 	var len = childNodes.length;
+		// 	for(var i = 0; i < len; i++){
+		// 		if(childNodes[i].nodeType == 1){
+		// 			myChildren.push(childNodes[i]);
+		// 		}
+		// 	}
+		// 	return myChildren;
+		// }
+		// var div = document.getElementsByTagName('div')[0];
+
+		//编程作业5：自己封装hasChildren()方法，不可用children属性。
+
+		//编程作业6：封装函数insertAfter()；功能类似insertBefore()。
+		// class Student {
+		// 	constructor(name){
+		// 		this.name = name;
+		// 	}
+		// 	hello(){
+		// 		alert('Hello, ' + this.name + '!')
+		// 	}
+		// }
+
+		// class PrimaryStudent extends Student{
+		// 	constructor(name, grade){
+		// 		super(name);
+		// 		this.grade = grade;
+		// 	}
+		// 	myGrade(){
+		// 		alert('I am at  grade' + this.grade);
+		// 	}
+		// }
+		//****************************************************************************
+
+		//******************************************************************
+		//dom操作
+		//增加
+		// document.createElement();
+		// document.createTextNode();
+		// document.createComment();
+		// document.createDocumentFragment()；
+		//插入
+		// PARENTNODE.appendChild(Node); 添加到最后
+		// PARENTNODE.insertBefore(newItem, existingItem); 将newItem插入到existingItem前
+		//删除
+		// PARENT.removeChild(CHILD); 删除子节点CHILD,并返回CHILD
+		// CHILD.remove(); 删除本身
+		//替换
+		// parent.replaceChild(newItem,originItem)
+
+		// Element节点属性方法
+		// elem.innerHTML
+		// elem.innerText(火狐不兼容)  elem.textContent(老版本IE不好使)
+		// elem.setAttribute('className','classValue')
+		// elem.getAttribute('className')
+		// elem.className = 'str' //直接改变class属性
+
+		//原型链上实现insertAfter, 功能参照insertBefore
+		// Element.prototype.insertAfter = function(newItem, existingItem){
+		// 	if(existingItem.nextElementSibling){
+		// 		this.insertBefore(newItem, existingItem.nextElementSibling);
+		// 	}else{
+		// 		this.appendChild(newItem);
+		// 	}
+		// }
+		//*****************************************************************
+
+		//***************************************************************************
+		//获取窗口属性，dom尺寸
+		//	获取鼠标位置
+		// 		window.pageX/pageY
+
+		//	获取滚动条滚动距离：
+		// 		window.pageXOffset/pageYOffset (IE8及以下不兼容)
+		// 		document.body/documentElement.scrollLeft/scrollTop (用时取两值相加，因为不可能存在同时两个值)
+		// 	封装兼容性方法getScrollOffset
+		//		function getScrollOffset(){
+		//			if(window.pageXOffset){
+		//				return {
+		//					x: window.pageXOffset,
+		//					y: window.pageYOffset
+		//				}
+		//			}else{
+		//				return {
+		//					x: document.documentElement.scrollLeft + document.body.scrollLeft,
+		//					y: document.documentElement.scrollTop + document.body.scrollTop
+		//				}
+		//			}
+		//		}
+
+		//	获取视口的尺寸：
+		//		window.innerWidth/innerHeight (IE8及以下不兼容)
+		//		document.documentElement.clientWidth/clientHeight(标准模式下，任意浏览器兼容)
+		//		document.body.clientWidth/clientHeight(适用于怪异模式下浏览器)
+		// 	封装兼容性方法getViewportSize:
+		// 		function getViewportSize(){
+		// 			if(window.innerWidth){
+		// 				return {
+		// 					w: window.innerWidth,
+		// 					h: window.innerHeight
+		// 				}
+		// 			}else{
+		// 				if(document.compatMode == 'BackCompat'){
+		// 					return{
+		// 						w: document.body.clientWidth,
+		// 						h: document.body.clientHeight
+		// 				}
+		// 				}else{
+		// 					return{
+		// 						w: document.documentElement.clientWidth,
+		// 						h: document.documentElement.clientHeight
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+
+		//	查看元素属性
+		// 		domEle.offsetWidth/offsetHeight  查看元素尺寸
+		// 		domEle.offsetLeft/offsetTop
+		//			查看元素位置，对于父级无定位的元素，返回相对文档的坐标；
+		//			对于有定位父级的元素，返回相对于最近的有定位父级的坐标。
+
+		//	让滚动条滚动
+		// 		window.scroll(x,y)  window.scrollTo(x,y)  绝对值     window.scrollBy(x,y)  相对值
+
+		// 脚本化css（写入值必须是字符串格式）
+		// 		div.style.width  div.style.backgroundColor  div.style.borderRadius  //只能展示行间样式，引入的不能展示。
+		//		div.style.cssFloat(float为保留字，因此这样表示)  div.className（直接获取类名，较常用）
+		// 		window.getComputedStyle(div, null)  //获取当前元素显示对应的属性，包括默认值。
+		//		div.currentStyle                    //获取当前元素显示对应的属性，IE8及以下适用。
+		//*************************************************************************************
+
+		//***********************************************************************************
+		// 事件：交互体验的核心
+		// 	绑定事件
+		// 		elem.onxxx --- div.onclick = function(){}  //点击事件，等于写在行间
+		// 		obj.addEventListener(type,function,false)  //可多次绑定多个函数，IE9以下不兼容
+		// 		obj.attachEvent('on'+type, function)   	   //IE独有
+		// 		type --- click/mouseover/keydown
+		// 		封装方法addEvent
+		// 			function addEvent(elem, type, handle){
+		// 				if(elem.addEventListener){
+		// 					elem.addEventListener(type, handle, false);
+		// 				}else if(elem.attachEvent){
+		// 					elem.attachEvent('on' + type, function(){
+		// 						handle.call();
+		// 					})
+		// 				}else{
+		// 					elem['on' + type] = handle;
+		// 				}
+		// 			}
+		//	解除事件
+		// 		div.onclick = null;
+		// 		div.removeEventListener('click', foo, false) //匿名函数无法解除
+		//		div.detachEvent('on'+ type, foo)  //匿名函数无法解除
+		//**********************************************************************************
+
+
+		//***********************************************************************************
+		//事件处理模型
+		//	事件冒泡：结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件
+		//			 ，自子元素冒泡向父元素。（自底向上） 第三个参数设置为false
+		//		示例：
+		// 			var wrapper = document.getElementsByClassName('wrapper')[0],
+		// 				content = document.getElementsByClassName('content')[0],
+		// 				inner = document.getElementsByClassName('inner')[0];
+		//
+		// 			wrapper.addEventListener('click', function(){console.log('wrapper')}, false);
+		// 			content.addEventListener('click', function(){console.log('content')}, false);
+		// 			inner.addEventListener('click', function(){console.log('inner')}, false);
+
+		//	事件捕获：结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件
+		//			  ，自父元素捕获至子元素。（自顶向下）第三个参数设置为true
+		//		示例：
+		// 			var wrapper = document.getElementsByClassName('wrapper')[0],
+		// 				content = document.getElementsByClassName('content')[0],
+		// 				inner = document.getElementsByClassName('inner')[0];
+		//
+		// 			wrapper.addEventListener('click', function(){console.log('wrapper')}, false);
+		// 			content.addEventListener('click', function(){console.log('content')}, true);
+		// 			inner.addEventListener('click', function(){console.log('inner')}, false);
+
+		//	事件触发顺序：结构上嵌套关系的元素，先自父元素向子元素执行第三个参数为true的元素，
+		//				  然后再自子元素向父元素执行第三个参数为false的元素。
+
+		//	取消冒泡：
+		// 		event.stopPropagation() //ie9以下不支持
+		// 		div.onclick = function(e){e.stopPropagation();}
+		// 		event.cancelBubble() = true;  //IE独有,现在chrome也实现了
+		// 		div.onclick = function(e){e.cancelBubble = true;}
+		//	阻止默认事件：表单提交、a标签跳转、右键菜单等
+		// 		1.return false;  以对象属性的方式注册的事件才生效
+		// 		2.event.preventDefault();  W3C标准，IE9以下不兼容
+		//		3.event.returnValue = false; 兼容IE，值为true时，则恢复默认事件
+
+		// 阻止默认事件应用示例：
+		// 	var a = document.getElementsByTagName('a')[0];
+		// 	var timeDown,
+		// 			timeUp;
+		// 	a.onmousedown = function(){
+		// 		timeDown = new Date().getTime();
+		// 	}
+		// 	a.onmouseup = function(){
+		// 		timeUp = new Date().getTime();
+		// 		timeInterval = timeUp - timeDown
+		// 		if(timeInterval > 200){
+		// 			a.onclick = function(e){
+		// 				e.returnValue = false;
+		// 			}
+		// 		}else{
+		// 			a.onclick = function(e){
+		// 				e.returnValue = true;
+		// 			}
+		// 		}
+		// 	}
+
+		//	事件源对象：触发某个事件时，触发源是在哪个元素。
+		//		应用示例：
+		// 			var ul = document.getElementsByTagName('ul')[0];
+		// 			ul.onclick = function(e){
+		// 				var event = e || window.event;
+		// 				var target = event.target || event.srcElement;
+		// 				console.log(target.innderText);
+		// 			}
+
+		//	鼠标事件：click mousedown mousemove mouseup contextmenu mouseover mouseout mouseenter mouseleave
+		//	用button来区分鼠标的按键，0/1/2 --- e.button = 0(鼠标左键) 1(中间滚轮键) 2(鼠标右键)
+		//	DOM3标准规定：click事件只能监听左键，只能通过mousedown和mouseup来判断鼠标键
+		//	如何解决mousedown和click冲突（利用阻止默认事件机制）
+
+		//	移动端事件：touchstart touchmove touchend
+		//	键盘事件：keydown keyup keypress key
+		//		keydown > keypress > keyup
+		//		keydown可以响应任意键盘按键，keypress只可以响应字符类键盘按键
+		//		keypress返回ASCII码，可以转化成相应字符。
+
+		//	示例：拖拽
+		// 		var div = document.getElementsByTagName('div')[0];
+		// 		div.onmousedown = function(){
+		// 			document.onmousemove = function (e){                //div.setCapture()  div.releaseCapture()
+		// 				var event = e || window.event;
+		// 				console.log(event.pageX + ' ' + event.pageY);
+		// 				div.style.left = event.pageX - 50 + 'px';
+		// 				div.style.top = event.pageY -50 + 'px';
+		// 			}
+		// 		}
+		// 		document.onmouseup = function (){
+		// 			document.onmousemove = null;
+		// 		}
+
+		//	示例：封装拖拽方法
+		// 		function drag(elem){
+		// 			var disX,
+		// 				disY;
+		// 			addEvent(elem, 'mousedown', function(e){
+		// 				var event = e || window.event;
+		// 				disX = event.clientX - parseInt(getStyle(elem, 'left'));
+		// 				disY = event.clientY - parseInt(getStyle(elem, 'top'));
+		// 				addEvent(document, 'mousemove', mouseMove);
+		// 				addEvent(document, 'mouseup', mouseUp);
+		// 				stopBubble(event);
+		// 				cancelHandler(event);
+		// 			});
+		// 			function mouseMove(e){
+		// 				var event = e || window.event;
+		// 				elem.style.left = event.clientX - disX + 'px';
+		// 				elem.style.top = event.clienY -disY +'px';
+		// 			}
+		// 			function mouseUp(e){
+		// 				var event = e || window.event;
+		// 				removeEvent(document, 'mousemove', mouseMove);
+		// 			}
+		//		}
+		//*************************************************************************
+
+
+	</script>
+</body>
+</html>
