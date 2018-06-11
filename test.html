@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>my homepage</title>
+		<link rel="stylesheet" href="test.css">
+		<style>
+			#textInput{
+				color: gray;
+			}
+			div.wrapper{
+				width: 300px;
+				height: 300px;
+				background-color: black;
+			}
+			div.content{
+				width: 200px;
+				height: 200px;
+				background-color: white;
+			}
+			div.inner{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+			}
+			div.dragBox{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+			}
+			#companyListWrapper li:hover{
+				background-color: rgb(255,255,255);
+				color: rgb(0, 0, 0);
+				font-weight: bold;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+<!-- 		<div class="wrapper">
+			<div class="content">
+				<div class="inner"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wrapper = document.getElementsByClassName('wrapper')[0];
+			var content = document.getElementsByClassName('content')[0];
+			var inner = document.getElementsByClassName('inner')[0];
+			wrapper.addEventListener("click",function(){
+				console.log('wrapper false');
+			},false);
+			wrapper.addEventListener("click",function(){
+				console.log('wrapper true');
+			},true);
+			content.addEventListener("click",function(){
+				console.log('content false');
+			},false);
+			content.addEventListener("click",function(){
+				console.log('content true');
+			},true);
+			inner.addEventListener("click",function(){
+				console.log('inner true');
+			},true);
+			inner.addEventListener("click",function(){
+				console.log('inner true');
+			},true);
+		</script> -->
+<!-- 		<input type="text" value="请输入密码" id="pwd">
+		<script type="text/javascript">
+			function my$(id){
+				return document.getElementById(id);
+			}
+		</script>
+		<script>
+			var input = my$('textInput');
+			input.onfocus = function(){
+				if(this.value == '请输入文字'){
+					this.value = '';
+					this.style.color = 'black';
+				}
+			}
+			input.onblur = function(){
+				if(this.value == ''){
+					this.value = '请输入文字';
+					this.style.color = 'gray';
+				}
+				this.style.color = 'gray';
+			}
+		</script> -->
+<!-- 	<div class="dragBox" style="position:absolute; left:0; top:0;"></div>
+	<script>
+		// function addEvent(elem,type,handle){
+		// 	if(elem.addEventListener){
+		// 		elem.addEventListener(type,handle,false);
+		// 	}else if(elem.attachEvent){
+		// 		elem.attachEvent('on'+type,function(){
+		// 			handle.call();
+		// 		})
+		// 	}else{
+		// 		elem['on'+type] = handle;
+		// 	}
+		// }
+		function addEventDrag(elem){
+			function mouseMove(e){
+					var event = e || window.event;
+					elem.style.left = event.clientX - elem.offsetWidth/2 + 'px';
+					console.log(elem.style.left);
+					console.log(event.clientX);
+					elem.style.top = event.clientY - elem.offsetHeight/2 + 'px';
+				}
+			elem.addEventListener('mousedown',function(){
+				document.addEventListener('mousemove', mouseMove, false)
+				document.addEventListener('mouseup',function(){
+					document.removeEventListener('mousemove',mouseMove,false);
+					mouseUp.call();
+				} ,false)
+			},false)
+		}
+		var dragBox = document.getElementsByClassName('dragBox')[0];
+		addEventDrag(dragBox);
+	</script> -->
+
+	<!--创建标签的方式-->
+
+	<!--方式一：document.write()，如果在页面创建后执行，会覆盖整个页面。-->
+	<!-- <input type="button" value="创建一个p标签" id="btn" />
+	<script>
+		document.getElementById('btn').onclick = function(){
+			document.write('<p>这是一个p标签</p>')
+		}
+		document.write('<p>这个p标签不点击按钮就有</p>')
+	</script> -->
+
+	<!--方式二：对象.innerHTML = ""-->
+	<!--添加文本-->
+	<!-- <input type="button" value="在div中创建一个P标签" id="btn" />
+	<div style="width:200px; height: 200px; border: 10px dashed #0ff; background-color: rgba(255,255,0,0.4)"></div>
+	<script>
+		var div = document.getElementsByTagName('div')[0];
+		document.getElementById('btn').onclick = function(){
+			div.innerHTML = "床前明月光，<br>疑似地上霜。<br>举头望明月，<br>低头思故乡。<br>";
+		}
+	</script> -->
+	<!--添加图片-->
+	<!-- <input type="button" value="紫霞仙子" id="btn" />
+	<div style="display: inline-block; border: 10px solid black;"></div>
+	<script>
+		var div = document.getElementsByTagName('div')[0];
+		var button = document.getElementById('btn');
+		button.onclick = function(){
+			div.innerHTML = "<img src='images/zhuyin.jpg' src='紫霞仙子' />";
+		}
+	</script> -->
+	<!--添加列表-->
+	<!-- <input type="button" value="创建列表" id="btn">
+	<div id="companyList" style="width: 200px; height: 500px; background-color: grey;"></div>
+	<script>
+		var companyList = document.getElementById('companyList');
+		var button = document.getElementById('btn');
+		button.addEventListener('click',function(){
+			companyList.innerHTML = "<ul style='list-style:none; padding: 0; margin: 0';><li>Apple</li><li>Google</li><li>Facebook</li><li>SpaceX</li></ul>"
+		}, false)
+	</script> -->
+	<!--添加列表2-->
+	<!-- <input type="button" value="互联网公司" id="btn" />
+	<div id="companyListWrapper" style="width: 200px; height: 600px; background-color: #808080;"></div>
+	<script>
+		var button = document.getElementById('btn');
+		var companyListWrapper = document.getElementById('companyListWrapper');
+		var companyList = ['阿里巴巴','腾讯','百度','京东','爱奇艺','美团','网易','新浪'];
+		var str = "<ul style='margin: 0; padding: 0;'>"
+		for(var i = 0; i < companyList.length; i++){
+			str += '<li>' + companyList[i] + '</li>';
+		}
+		str += "</ul>";
+		button.onclick = function(){
+			console.log(1);
+			companyListWrapper.innerHTML = str;
+		}
+	</script> -->
+
+	<!--方式三：document.createElement('标签名')-->
+	<!-- <input type="button" value="创建一个p标签" id="btn" />
+	<div id="dv" style="width: 200px; height: 500px; background-color: #808080;"></div>
+	<script>
+		var button = document.getElementById('btn');
+		var dv = document.getElementById('dv');
+		button.onclick = function(){
+			var pTag = document.createElement('p');
+			pTag.innerHTML = '这是一个p标签';
+			dv.appendChild(pTag);
+		}
+	</script> -->
+	</body>
+</html>
