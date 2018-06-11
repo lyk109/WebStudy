@@ -1,0 +1,23 @@
+1、保证Apache服务器的安全
+
+	在默认情况下，当页面访问出错时。会显示apache服务器版本和系统名称
+	可在httpd.conf文件配置：
+		ServerSignature Off
+		ServerTokens Prod
+
+	如果文档根目录没有index文件，则默认显示根目录
+	配置：
+		<Directory /var/www/html>
+			Options -Indexes
+		</Directory>
+
+	将不需要的模块都disable
+
+	限制web根目录外的文件的访问权限
+	配置
+		<Directory>
+			Options None
+			AllowOverride None
+			Order deny,allow
+			Deny from all
+		</Directory>
