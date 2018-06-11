@@ -21,3 +21,21 @@
 			Order deny,allow
 			Deny from all
 		</Directory>
+
+2、配置同一个ip多个域名站点
+	NameVirtualHost *:80
+	<VirtualHost *:80>
+		ServerName	www.example.com     ##对应域名
+		DocumentRoot	/var/www/html/example.com 	##站点对应的根目录
+		ServerAlias	example.com			##配置简写域名
+		ServerAdmin	webmaster@example.com
+		ErrorLog	logs/example.com-error_log
+		CustomLog	logs/example.com-acess_log common
+		DirectoryIndex	home.html		##页面中展示的文档，默认index.html
+	</VirtualHost>
+	<VirtualHost *:80>
+		ServerName	www.host.com
+		DocumentRoot	/var/www/html/test.com
+		ServerAdmin	admin@test.com
+	</VirtualHost>
+
