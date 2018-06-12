@@ -220,5 +220,29 @@
 			this.style = '';
 		}
 	</script> -->
+	<!-- 动态添加表格 -->
+	<!-- <input type="button" style="display: block" value="创建表格" id="btn" />
+	<div id="tableWrapper" style="background-color: #808080; float:left;"></div>
+	<script type="text/javascript">
+		var tableList = [{name: '百度',href: 'https://www.baidu.com'}, {name: '谷歌', href: 'https://www.google.com'}, {name: 'YouTube', href: 'https://www.youtube.com'}, {name: '优酷', href: 'https://www.youku.com'}]
+		document.getElementById('btn').onclick = function(){
+			var table = document.createElement('table');
+			table.border = '1';
+			table.cellPadding = '0';
+			table.cellSpacing = '0';
+			for(var i = 0; i < tableList.length; i++){
+				var data = tableList[i];
+				var tr = document.createElement('tr');
+				var td1 = document.createElement('td');
+				td1.innerHTML = data.name;
+				var td2 = document.createElement('td');
+				td2.innerHTML = "<a href='" + data.href + "'>" + data.href+ "</a>";
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				table.appendChild(tr);
+			}
+			document.getElementById('tableWrapper').appendChild(table);
+		}
+	</script> -->
 	</body>
 </html>
