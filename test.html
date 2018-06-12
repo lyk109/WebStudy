@@ -191,5 +191,34 @@
 			dv.appendChild(pTag);
 		}
 	</script> -->
+	<!-- 动态添加列表 -->
+	<!-- <input type="button" value="添加列表" id="btn" />
+	<div id="listWrapper" style="width: 300px; height: 800px; background-color: #808080;"></div>
+	<script type="text/javascript">
+		var button = document.getElementById('btn');
+		var languageList = ['python','java','c','c++','javascript','ruby','php','golang']
+		button.onclick = function(){
+			var ul = document.createElement('ul');
+			for(var i = 0; i < languageList.length; i++){
+				var li = document.createElement('li');
+				li.innerHTML = languageList[i];
+				li.onmouseover = mouseoverHandle;
+				li.onmouseleave = mouseleaveHandle;
+				ul.appendChild(li);
+			}
+			console.log(ul);
+			document.getElementById('listWrapper').appendChild(ul);
+			button.onclick = function(){};
+		}
+		function mouseoverHandle(){
+			this.style.cursor = 'pointer';
+			this.style.backgroundColor = '#000';
+			this.style.fontWeight = 'bold';
+			this.style.color = '#fff';
+		}
+		function mouseleaveHandle(){
+			this.style = '';
+		}
+	</script> -->
 	</body>
 </html>
