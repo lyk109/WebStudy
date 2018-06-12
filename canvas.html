@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas Study</title>
+	<script type="text/javascript">
+		function draw(){
+			var canvas = document.getElementById('tutorial');
+			if(canvas.getContext){
+				var ctx = canvas.getContext('2d');
+
+				// ctx.fillStyle = "rgb(255,0,0)";
+				// ctx.fillRect(0,0,100,100);
+				// ctx.fillStyle = "rgb(0,255,0)";
+				// ctx.fillRect(80,0,100,100);
+				// ctx.fillStyle = "rgb(0,0,255)";
+				// ctx.fillRect(40,80,100,100);
+				// ctx.fillStyle = "balck dash";
+				// ctx.strokeRect(150,150,100,100);
+				// ctx.fillStyle = "red";
+				// ctx.fillRect(150,150,100,100);
+
+				// ctx.beginPath();
+				// ctx.moveTo(25,50);
+				// ctx.lineTo(100,75);
+				// ctx.lineTo(100,25);
+				// ctx.fill();
+
+				// for(var i = 0; i < 255; i++){
+				// 	for(var j = 0; j < 255; j++){
+				// 		ctx.fillStyle = "rgb(" + i + "," + j +",0)";
+				// 		ctx.fillRect(i*3,j*3,3,3);
+				// 	}
+				// }
+
+				ctx.font = "48px serif";
+				ctx.strokeText("Hello world",20,50);
+			}
+		}
+	</script>
+	<style type="text/css">
+/*		canvas{
+			border: 1px solid black;
+		}*/
+	</style>
+</head>
+<body onload="draw();">
+	<canvas id="tutorial" width="765" height="765">
+		<img src="images/15.jpg" alt="picture" width="300" height="300" />
+	</canvas>
+</body>
+</html>

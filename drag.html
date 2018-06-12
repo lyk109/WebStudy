@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drag</title>
+	<style>
+		div{
+			width: 200px;
+			height: 100px;
+			border: 1px solid black;
+		}
+		p{
+			background-color: #808080;
+		}
+	</style>
+</head>
+<body>
+<!-- 	<div id="div1" >
+		<p id="dragElem" draggable="true">拖动元素</p>
+	</div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+		document.getElementById('dragElem').ondragstart = function(e){
+			var event = e || window.event;
+			event.dataTransfer.setData('Text',event.target.id);
+		}
+		function drop(e){
+			var event = e || window.event;
+			event.preventDefault();
+			var data = e.dataTransfer.getData('Text');
+			e.target.appendChild(document.getElementById(data));
+		}
+		function allowdrop(e){
+			var event = e || window.event;
+			event.preventDefault();
+		}
+		document.getElementById('div1').ondrop = drop;
+		document.getElementById('div2').ondrop = drop;
+		document.getElementById('div1').ondragover = allowdrop;
+		document.getElementById('div2').ondragover = allowdrop;
+	</script> -->
+	<div id="div1" ondragover="allowdrop()" ondrop="drop()">
+	<p id="dragElem" draggable="true" ondragstart="drag()">拖动元素</p>
+	</div>
+	<div id="div2" ondragover="allowdrop()" ondrop="drop()"></div>
+	<script type="text/javascript">
+		function allowdrop(e){
+			var event = e || window.event;
+			event.preventDefault();
+		}
+		function drag(e){
+			var event = e || window.event;
+			event.dataTransfer.setData('text', event.target.id);
+		}
+		function drop(e){
+			var event = e|| window.event;
+			event.preventDefault();
+			var data = event.dataTransfer.getData('text');
+			event.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</body>
+</html>
