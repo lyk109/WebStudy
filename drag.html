@@ -39,7 +39,7 @@
 		document.getElementById('div1').ondragover = allowdrop;
 		document.getElementById('div2').ondragover = allowdrop;
 	</script> -->
-	<div id="div1" ondragover="allowdrop()" ondrop="drop()">
+	<!-- <div id="div1" ondragover="allowdrop()" ondrop="drop()">
 	<p id="dragElem" draggable="true" ondragstart="drag()">拖动元素</p>
 	</div>
 	<div id="div2" ondragover="allowdrop()" ondrop="drop()"></div>
@@ -58,6 +58,26 @@
 			var data = event.dataTransfer.getData('text');
 			event.target.appendChild(document.getElementById(data));
 		}
-	</script>
+	</script> -->
+	<!-- <div id="div1" ondragover = "dragoverHandle()" ondrop = "dropHandle()">
+	<p id="dragElem" draggable="true" ondragstart="dragHandle()">拖动元素</p>
+	</div>
+	<div id="div2" ondragover = "dragoverHandle()" ondrop = "dropHandle()"></div>
+	<script type="text/javascript">
+		function dragHandle(e){
+			var event = e || window.event;
+			event.dataTransfer.setData('text', event.target.id);
+		}
+		function dragoverHandle(e){
+			var event = e || window.event;
+			event.preventDefault();
+		}
+		function dropHandle(e){
+			var event = e || window.event;
+			// event.preventDefault();
+			var data = event.dataTransfer.getData('text');
+			event.target.appendChild(document.getElementById(data));
+		}
+	</script> -->
 </body>
 </html>
