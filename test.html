@@ -266,9 +266,78 @@
 	<!-- 方法三：Elem.detachEvent('on'+type, fn) -->
 	<!-- 这种方法解绑的事件必须是命名函数 -->
 
+	<!-- 封装添加事件方法 -->
+	<!-- <script type="text/javascript">
+		function addEvent(elem, type, fn){
+			if(elem.addEventListener){
+				elem.addEventListener(type,fn,false);
+			}else if(elem.attachEvent){
+				elem.attachEvent('on'+type,fn);
+			}else{
+				elem['on'+type] = fn;
+			}
+		}
+	</script> -->
+
 	<!-- 阻止事件冒泡 -->
 	<!-- IE8不支持事件处理参数 eg: function(e){} -->
 	<!-- 方法一：window.event.cancelBubble = 'true'  //IE,Chrome支持 -->
 	<!-- 方法二：window.event.stopPropagation(); //Chrome,Firefox，IE支持-->
+	<!-- <div id="wrapper" style="width: 300px; height: 300px; background-color: black;">
+		<div id="content" style="width: 200px; height: 200px; background-color: red;">
+			<div id="inner" style="width: 100px;height: 100px;background-color: white;"></div>
+		</div>
+	</div>
+	<script>
+		addEvent(document.getElementById("wrapper"),'click',wrapperClickHandle);
+		addEvent(document.getElementById("content"),'click',contentClickHandle);
+		addEvent(document.getElementById("inner"),'click',innerClickHandle);
+		function wrapperClickHandle(){
+			console.log("wrapper");
+		}
+		function contentClickHandle(){
+			console.log("content");
+			window.event.stopPropagation();
+		}
+		function innerClickHandle(){
+			console.log("inner");
+			window.event.cancelBubble = 'true';
+		}
+	</script> -->
+
+
+	<!-- 事件3阶段 -->
+	<!-- 事件捕获阶段 -> 事件目标阶段 -> 事件冒泡阶段 -->
+	<!-- <div id="wrapper" style="width: 300px; height: 300px; background-color: black;">
+		<div id="content" style="width: 200px; height: 200px; background-color: red;">
+			<div id="inner" style="width: 100px;height: 100px;background-color: white;"></div>
+		</div>
+	</div>
+	<script>
+		document.getElementById("wrapper").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("wrapper ===> 冒泡 " + event.eventPhase);
+		},false);
+		document.getElementById("wrapper").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("wrapper ===> 捕获 " + event.eventPhase);
+		},true);
+		document.getElementById("content").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("content ===> 冒泡 " + event.eventPhase);
+		},false);
+		document.getElementById("content").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("content ===> 捕获 " + event.eventPhase);
+		},true);
+		document.getElementById("inner").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("inner ===> 冒泡 " + event.eventPhase);
+		},false);
+		document.getElementById("inner").addEventListener('click',function(e){
+			var event = e || window.event;
+			console.log("inner ===> 捕获 " + event.eventPhase);
+		},true);
+	</script> -->
 	</body>
 </html>

@@ -730,7 +730,7 @@
 
 
 		//***********************************************************************************
-		//事件处理模型
+		//事件处理模型 (三个阶段，捕获阶段event.eventPhase = 1;目标阶段event.eventPhase = 2;冒泡阶段event.eventPhase = 3)
 		//	事件冒泡：结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件
 		//			 ，自子元素冒泡向父元素。（自底向上） 第三个参数设置为false
 		//		示例：
@@ -753,8 +753,8 @@
 		// 			content.addEventListener('click', function(){console.log('content')}, true);
 		// 			inner.addEventListener('click', function(){console.log('inner')}, false);
 
-		//	事件触发顺序：结构上嵌套关系的元素，先自父元素向子元素执行第三个参数为true的元素，
-		//				  然后再自子元素向父元素执行第三个参数为false的元素。
+		//	事件触发顺序：结构上嵌套关系的元素，先自父元素向子元素执行第三个参数为true的元素，即捕获事件；直至目标，目标事件按绑定顺序执行。
+		//				  然后再自子元素向父元素执行第三个参数为false的元素，即冒泡事件。
 
 		//	取消冒泡：
 		// 		event.stopPropagation() //ie9以下不支持
