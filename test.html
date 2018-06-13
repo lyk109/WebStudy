@@ -244,5 +244,31 @@
 			document.getElementById('tableWrapper').appendChild(table);
 		}
 	</script> -->
+
+	<!-- 移除绑定事件 -->
+	<!-- 方法一：让事件函数指向null -->
+	<!-- <input type="button" value="按钮" id="btn1" />
+	<input type="button" value="干掉第一个按钮事件" id="btn2" />
+	<script type="text/javascript">
+		document.getElementById('btn1').onclick = (function(){
+			var count = 0;
+			return function(){
+					console.log("点击第"+count+"次");
+					count++;
+				}
+		})()
+		document.getElementById('btn2').onclick = function(){
+			document.getElementById("btn1").onclick = null;
+		}
+	</script> -->
+	<!-- 方法二：Elem.removeEventListener(type,fn,false) -->
+	<!-- 这种方法解绑的事件必须是命名函数 -->
+	<!-- 方法三：Elem.detachEvent('on'+type, fn) -->
+	<!-- 这种方法解绑的事件必须是命名函数 -->
+
+	<!-- 阻止事件冒泡 -->
+	<!-- IE8不支持事件处理参数 eg: function(e){} -->
+	<!-- 方法一：window.event.cancelBubble = 'true'  //IE,Chrome支持 -->
+	<!-- 方法二：window.event.stopPropagation(); //Chrome,Firefox，IE支持-->
 	</body>
 </html>
