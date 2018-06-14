@@ -339,5 +339,45 @@
 			console.log("inner ===> 捕获 " + event.eventPhase);
 		},true);
 	</script> -->
+
+	<!-- window.onload = function(){}  //页面加载事件 -->
+	<!-- window.location.href = 'url';window.location.assign('url'); //跳转页面，可以后退-->
+	<!-- window.location.replace('url')  //跳转页面，不可后退 -->
+	<!-- window.location.reload() //刷新页面-->
+	<!-- window.history.back() window.history.forward() 前进、后退-->
+	<!-- window.navigator.platform 获取平台类型-->
+	<!-- window.navigator.userAgent 获取浏览器版本-->
+
+	<!-- 摇 -->
+	<!-- <input type="button" value="摇" id="btn1" />
+	<input type="button" value="停" id="btn2" />
+	<div id="dv" style="position: absolute">
+		<img style="width: 300px" src="images/1.jpg" alt="图1">
+		<img style="width: 300px" src="images/2.jpg" alt="图2">
+	</div>
+	<script type="text/javascript">
+		document.getElementById("btn1").addEventListener('click', swing, false);
+		document.getElementById("btn2").addEventListener('click', stopSwing, false);
+		var timer;
+		function swing(){
+			if(timer){return;}
+			timer = setInterval(function(){
+				var left = Math.floor(Math.random()*100);
+				var top = Math.floor(Math.random()*100);
+				document.getElementById('dv').style.left = left + 'px';
+				document.getElementById('dv').style.top = top + 'px';
+			},1000)
+		}
+		function stopSwing(){
+			clearInterval(timer);
+			timer = undefined;
+		}
+	</script> -->
+
+	<div style="display: none; width: 100px; height: 100px; background-color: rgba(0,0,0,0.5); overflow: hidden">
+		<div style="display: inline-block; width: 120px; height: 120px; background-color: rgb(255,0,0"></div>
+	</div>
+	<div style="display: inline-block; width: 100px; height: 100px; background-color: rgb(0,255,0"></div>
+
 	</body>
 </html>

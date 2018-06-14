@@ -178,4 +178,4 @@ EMACScript引入了Strict mode（严格模式）的概念。
 		var timer2 = setTimeout(function(){}, time)  //timer2是一个数字
 		1、function推迟time毫秒执行
 	function可以替换成字符串形式的代码块（性能损失，不推荐）
-		var timer3 = setInterval('console.log('another way')',1000);
+		var timer3 = setInterval("console.log('another way')",1000);
