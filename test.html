@@ -362,22 +362,45 @@
 		function swing(){
 			if(timer){return;}
 			timer = setInterval(function(){
-				var left = Math.floor(Math.random()*100);
-				var top = Math.floor(Math.random()*100);
+				var left = Math.floor(Math.random()*10);
+				var top = Math.floor(Math.random()*10) +20;
 				document.getElementById('dv').style.left = left + 'px';
 				document.getElementById('dv').style.top = top + 'px';
-			},1000)
+			},10)
 		}
 		function stopSwing(){
 			clearInterval(timer);
 			timer = undefined;
 		}
 	</script> -->
-
-	<div style="display: none; width: 100px; height: 100px; background-color: rgba(0,0,0,0.5); overflow: hidden">
-		<div style="display: inline-block; width: 120px; height: 120px; background-color: rgb(255,0,0"></div>
-	</div>
-	<div style="display: inline-block; width: 100px; height: 100px; background-color: rgb(0,255,0"></div>
-
-	</body>
+	<input type="button" value="移动到400px" id="btn1">
+	<input type="button" value="移动到800px" id="btn2">
+	<div id="dv"></div>
+	<script type="text/javascript">
+		document.getElementById('btn1').addEventListener('click',moveTo,false);
+		document.getElementById('btn2').addEventListener('click',moveTo,false);
+		function moveTo(){
+			var dv = document.getElementById('dv');
+			var reg = /[0-9]+/;
+			var TargetPosition = parseInt(this.value.match(reg)[0]);
+			var currentPosition = dv.offsetLeft;
+			console.log(TargetPosition,currentPosition)
+			var timer = setInterval(function(){
+				var diff = currentPosition - TargetPosition;
+				if(Math.abs(diff) < 20){
+					dv.style.left = TargetPosition + 'px';
+					clearInterval(timer);
+					return;
+				}
+				if(currentPosition < TargetPosition){
+					currentPosition += 20;
+				}else if(currentPosition > TargetPosition){
+					currentPosition -= 20;
+				}else{
+					clearInterval(timer);
+				}
+				dv.style.left = currentPosition + 'px';
+			},10)
+		}
+	</script>
 </html>
