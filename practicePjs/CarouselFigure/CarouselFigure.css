@@ -20,13 +20,13 @@ body{
 	width: 500px;
 	height: 320px;
 	overflow: hidden;
-	border: 1px solid #808080;
+	border: 10px solid #808080;
 }
 
 #CarouselFigure ul.figures{
 	position: absolute;
 	left: 0;
-	right: 0;
+	top: 0;
 	white-space: nowrap;
 	width: 10000px;
 	height: 320px;

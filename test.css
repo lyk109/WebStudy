@@ -10,3 +10,22 @@ div#dv{
 	height: 100px;
 	background-color: red;
 }
+
+div{
+	/*position: fixed;*/
+	width: 500px;
+	height: 500px;
+	border: 20px solid #0f0;
+	padding: 20px;
+	margin: 20px;
+	background-color: black;
+}
+
+li{
+	position: absolute;
+/*	left: 0;
+	top: 0;*/
+	width: 200px;
+	height: 200px;
+	background-color: rgba(255,0,0,0.4);
+}
