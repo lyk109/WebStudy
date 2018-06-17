@@ -26,7 +26,7 @@ body{
 	top: 0;
 }
 
-div.ball{
+div{
 	position: absolute;
 	left: calc(50% - 25px);
 	width: 50px;

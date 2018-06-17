@@ -451,5 +451,34 @@
 		}
 	</script> -->
 
+	<div></div>
+	<script type="text/javascript">
+		function getStyle(elem, attr){
+			return window.getComputedStyle ? window.getComputedStyle(elem,null)[attr] : elem.currentStyle[attr];
+		}
+	</script>
+	<script type="text/javascript">
+		var json = {};
+		function animate(elem,json){
+			clearInterval(elem.timerId);
+			elem.timeId = setInterval(function(){
+				var finished = true;
+				for(var attr in json){
+					var current = parseInt(getStyle(elem,attr));
+					var step = (json[attr] - current)/10;
+					step = step > 0 ? Math.ceil(step) : Math.floor(step);
+					current += step;
+					console.log(current);
+					elem.style[attr] = current + 'px';
+					if(current != json[attr]){
+						finished = false;
+					}
+				}
+				if(finished == true){
+					clearInterval(elem.timeId);
+				}
+			},20)
+		}
+	</script>
 
 </html>
