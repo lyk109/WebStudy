@@ -26,6 +26,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+
+		//元素移动方法，将elem元素移动到目标位置
 		function horizontalmoveTo(elem, targetPosition){
 			elem.timer = setInterval(function(){
 				var currentPosition = elem.offsetLeft;
@@ -42,16 +44,34 @@
 				}
 			},5)
 		}
+
+		//解决setInterval休眠导致的bug
+		document.onvisibilitychange = function(){
+			if(document.visibilityState == 'hidden'){
+				for(var i = 0; i < 100000; i++){
+					clearInterval(i);
+				}
+			}
+			if(document.visibilityState == 'visible'){
+				timer = setInterval(autoMove,2000);
+				console.log(timer);
+			}
+		};
 	</script>
 	<script type="text/javascript">
+
+		//获取绑定事件相关的元素
 		var CarouselFigure = document.getElementById('CarouselFigure');
 		var CarouselFigureUl = CarouselFigure.getElementsByTagName('ul')[0];
 		var focus = document.getElementsByClassName('focus')[0];
 		var focusLeft = focus.getElementsByTagName('span')[0];
 		var focusRight = focus.getElementsByTagName('span')[1];
 		var chooseButtons = document.getElementsByClassName('chooseButtons')[0].children;
+
+		//获取移动宽度（即图片宽度）
 		var imgWidth = CarouselFigureUl.children[0].offsetWidth;
 
+		//切换过程中图片页码区域的切换方法
 		function setChoosedButton(index){
 			index = index ? index : Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
 			if(index > 3 || index < 0){
@@ -63,6 +83,7 @@
 			chooseButtons[index].className = 'choosed';
 		}
 
+		//移除定时器方法
 		function clearTimer() {
 			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
 			clearInterval(timer);
@@ -71,6 +92,7 @@
 			CarouselFigureUl.style.left = -(index)*500 + 'px';
 		}
 
+		//图片自动轮播
 		function autoMove(){
 			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
 			if(index >= 4){
@@ -81,18 +103,20 @@
 			setChoosedButton(index);
 			horizontalmoveTo(CarouselFigureUl, -index*imgWidth);
 		}
+		var timer = setInterval(autoMove,2000);
 
-		var timer = setInterval(autoMove,2000)
-
+		//鼠标进入图片区域，轮播停止，显示左右移动焦点
 		CarouselFigure.onmouseenter = function(){
 			focus.style.display = 'block';
 			clearTimer();
 		}
+		//鼠标移出图片区域，轮播重新开始，失去左右移动焦点
 		CarouselFigure.onmouseleave = function(){
 			focus.style.display = 'none';
 			timer = setInterval(autoMove,2000)
 		}
 
+		//绑定左边焦点的点击事件，使得图片左移
 		focusLeft.onclick = function(){
 			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
 			if(index >= 4){
@@ -105,6 +129,7 @@
 			}
 		}
 
+		//绑定右边焦点点击事件，使得图片右移
 		focusRight.onclick = function(){
 			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
 			if(index == 4){
@@ -117,6 +142,7 @@
 			}
 		}
 
+		//移动到对应页码，切换到对应图片
 		for(var i = 0; i < chooseButtons.length; i++){
 			chooseButtons[i].onmouseenter = function(){
 				var index = this.innerHTML - 1;

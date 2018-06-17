@@ -423,11 +423,33 @@
     	};
  	 	setInterval(replaceThing, 1000);
 	</script> -->
-	<div>
-		<li></li>
-	</div>
-	<script>
-		var div = document.getElementsByTagName('div')[0];
-		var li = document.getElementsByTagName('li')[0];
-	</script>
+
+	<!-- scroll系列 -->
+	<!-- 浏览器滚动事件：window.onscroll -->
+	<!-- scrollWidth：元素中内容实际的宽与元素本身宽度取最大值 -->
+	<!-- scrollHeight: 元素中内容实际的高与元素本身高度取最大值 -->
+	<!-- scrollTop: 向上卷曲出去的距离 -->
+	<!-- scrollLeft: 想左卷曲出去的距离 -->
+	<!-- window.pageYOffset || document.documentElement.scrollTop||document.body.scrollTop -->
+	<!-- window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollleft -->
+
+	<!-- <div id="dv1"></div>
+	<div id="dv2"></div>
+	<div id="dv3"></div>
+	<script type="text/javascript">
+		var dv1 = document.getElementById("dv1");
+		var dv2 = document.getElementById("dv2");
+		var dv3 = document.getElementById("dv3");
+		window.onscroll = function(){
+			if(window.pageYOffset >= dv1.offsetHeight){
+				dv2.className = 'scrollfixed';
+				dv3.style.marginTop = dv2.offsetHeight + 'px';
+			}else{
+				dv2.className = '';
+				dv3.style.marginTop = '0px';
+			}
+		}
+	</script> -->
+
+
 </html>
