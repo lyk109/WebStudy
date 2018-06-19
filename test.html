@@ -4,37 +4,6 @@
 		<meta charset="UTF-8">
 		<title>my homepage</title>
 		<link rel="stylesheet" href="test.css">
-		<style>
-			#textInput{
-				color: gray;
-			}
-			div.wrapper{
-				width: 300px;
-				height: 300px;
-				background-color: black;
-			}
-			div.content{
-				width: 200px;
-				height: 200px;
-				background-color: white;
-			}
-			div.inner{
-				width: 100px;
-				height: 100px;
-				background-color: black;
-			}
-			div.dragBox{
-				width: 100px;
-				height: 100px;
-				background-color: black;
-			}
-			#companyListWrapper li:hover{
-				background-color: rgb(255,255,255);
-				color: rgb(0, 0, 0);
-				font-weight: bold;
-				cursor: pointer;
-			}
-		</style>
 	</head>
 	<body>
 <!-- 		<div class="wrapper">
@@ -451,7 +420,6 @@
 		}
 	</script> -->
 
-	<div></div>
 <!-- 	<script type="text/javascript">
 		function getStyle(elem, attr){
 			return window.getComputedStyle ? window.getComputedStyle(elem,null)[attr] : elem.currentStyle[attr];
@@ -480,5 +448,19 @@
 			},20)
 		}
 	</script> -->
+	<div></div>
+	<script type="text/javascript">
+		div = document.getElementsByTagName('div')[0];
+	</script>
+
+	<!-- client系列 -->
+	<!-- elem.clientWidth 可视区域的宽度 -->
+	<!-- elem.clientHeight 可视区域的高度-->
+	<!-- elem.clientLeft 左边边框宽度-->
+	<!-- event.pageX相对于页面左边距离（Webkit） -->
+	<!-- event.pageY相对于页面上边距离（Webkit） -->
+	<!-- window.pageXOffset || document.documentElement.scrollLeft || document.scrollLeft -->
+	<!-- window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop -->
+	<!-- 封装方法跟着鼠标飞 -->
 
 </html>
