@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -402,7 +402,7 @@
 	<!-- window.pageYOffset || document.documentElement.scrollTop||document.body.scrollTop -->
 	<!-- window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollleft -->
 
-	<!-- <div id="dv1"></div>
+			<!-- <div id="dv1"></div>
 	<div id="dv2"></div>
 	<div id="dv3"></div>
 	<script type="text/javascript">
@@ -448,10 +448,6 @@
 			},20)
 		}
 	</script> -->
-	<div></div>
-	<script type="text/javascript">
-		div = document.getElementsByTagName('div')[0];
-	</script>
 
 	<!-- client系列 -->
 	<!-- elem.clientWidth 可视区域的宽度 -->
@@ -462,5 +458,18 @@
 	<!-- window.pageXOffset || document.documentElement.scrollLeft || document.scrollLeft -->
 	<!-- window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop -->
 	<!-- 封装方法跟着鼠标飞 -->
+	<img src="images/tianshi.gif" alt="angel" id="angelImg">
+	<script type="text/javascript">
+		var angelGif = document.getElementById('angelImg');
+		document.onmousemove = function(e){
+			var event = e || window.event;
+			var scrollTop = window.pageYOffset || document.documentElement.scollTop || document.body.scrollTop;
+			var scrollLeft = window.pageXIffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+			angelGif.style.top = event.clientY + scrollTop + 'px';
+			angelGif.style.left = event.clientX + scrollLeft + 'px';
+		}
+	</script>
+
+	
 
 </html>
