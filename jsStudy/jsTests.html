@@ -38,11 +38,11 @@
 		// fn(1);
 
 		// //2.求输出
-		// console.log(test);   //f test(){....}
+		// console.log(test);
 		// function test(test){
-		// 	console.log(test);  //f test(){}
+		// 	console.log(test);
 		// 	var test = 234;
-		// 	console.log(test);  //234
+		// 	console.log(test);
 		// 	function test(){};
 		// }
 		// test(1);
@@ -61,42 +61,59 @@
 		//斐波那契数列
 		//程序一
 		// function fibonacci(n){
-		// 	var first = 1;
-		// 	var second = 1;
-		// 	if(n <= 2){
-		// 		result = 1;
+		// 	if(n%1 != 0 || n <= 0){
+		// 		return "input error";
 		// 	}else{
-		// 		for(var i = 3; i <= n; i++){
-		// 			result = first + second;
-		// 			first = second;
-		// 			second = result;
+		// 		if(n == 1 || n == 2){
+		// 			return 1;
+		// 		}else{
+		// 			var result1 = 1;
+		// 			var result2 = 1;
+		// 			for(var i = 3; i <= n; i++){
+		// 				result = result1 + result2;
+		// 				result1 = result2;
+		// 				result2 = result;
+		// 			}
+		// 			return result;
 		// 		}
 		// 	}
-		// 	return result;
 		// }
+
 		//程序二
 		// function fibonacci(n){
-		// 	if(n == 1 || n == 2){
-		// 		return 1;
+		// 	if(n%1 != 0 || n <= 0){
+		// 		return "input error";
 		// 	}else{
-		// 		return fibonacci(n-2)+fibonacci(n-1);
+		// 		if(n == 1 || n == 2){
+		// 			return 1;
+		// 		}else{
+		// 			return fibonacci(n-1) + fibonacci(n-2); 
+		// 		}
 		// 	}
-		// }
+		// }		
 		//********************************************************
+
+
 
 
 		//********************************************************
 		//求n阶乘
 		//程序一
 		// function factoria(n){
-		// 	var result = 1;
-		// 	for(var i = 1; i <= n; i++){
+		// 	if(n%1 != 0 || n < 0){
+		// 		return "input error";
+		// 	}
+		// 	result = 1;
+		// 	for(var i = n; i > 0; i--){
 		// 		result *= i;
 		// 	}
 		// 	return result;
 		// }
 		//程序二 --- 递归调用，执行慢，复杂程序不用。
-		// function factoria(n) {
+		// function factoria(n){
+		// 	if(n%1 != 0 || n < 0){
+		// 		return "input error";
+		// 	}
 		// 	if(n == 0){
 		// 		return 1;
 		// 	}else{
@@ -104,6 +121,8 @@
 		// 	}
 		// }
 		//********************************************************
+
+
 
 
 		//********************************************************
