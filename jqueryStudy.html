@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery Study</title>
+	<link rel="stylesheet" href="jqueryStudy.css">
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+	<ul id="nav">
+		<li>
+			<div>一级菜单1</div>
+			<ul>
+				<li>二级菜单1</li>
+				<li>二级菜单2</li>
+				<li>二级菜单3</li>
+			</ul>
+		</li>
+		<li>
+			<div>一级菜单2</div>
+			<ul>
+				<li>二级菜单1</li>
+				<li>二级菜单2</li>
+				<li>二级菜单3</li>
+			</ul>
+		</li>
+		<li>
+			<div>一级菜单3</div>
+			<ul>
+				<li>二级菜单1</li>
+				<li>二级菜单2</li>
+				<li>二级菜单3</li>
+			</ul>
+		</li>
+	</ul>
+	<script type="text/javascript">
+		$(function(){
+			$("#nav>li").mouseenter(function(){
+				$(this).children('ul').show();
+				})
+			$("#nav>li").mouseleave(function(){
+				$(this).children('ul').hide();
+				})
+		})
+	</script>
+</body>
+</html>

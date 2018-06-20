@@ -458,7 +458,7 @@
 	<!-- window.pageXOffset || document.documentElement.scrollLeft || document.scrollLeft -->
 	<!-- window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop -->
 	<!-- 封装方法跟着鼠标飞 -->
-	<img src="images/tianshi.gif" alt="angel" id="angelImg">
+<!-- 	<img src="images/tianshi.gif" alt="angel" id="angelImg">
 	<script type="text/javascript">
 		var angelGif = document.getElementById('angelImg');
 		document.onmousemove = function(e){
@@ -468,8 +468,20 @@
 			angelGif.style.top = event.clientY + scrollTop + 'px';
 			angelGif.style.left = event.clientX + scrollLeft + 'px';
 		}
+	</script> -->
+
+	<div id="wrapper">
+		<div id="content1"></div>
+		<div id="content2"></div>
+	</div>
+	<script type="text/javascript">
+	var wrapper = document.getElementById('wrapper');
+	var content1 = document.getElementById('content1');
+	var content2 = document.getElementById('content2');
+	wrapper.onmouseleave = function(){
+		console.log(1);
+	}
 	</script>
 
-	
-
+	<!-- 放大镜 -->
 </html>
