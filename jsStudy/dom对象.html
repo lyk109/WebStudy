@@ -46,6 +46,37 @@
 		//		获取元素：parentElement
 		//				  previousElementSibling nextElementSibling
 		//				  firstElementChild lastElementChild children
+
+		//dom操作
+		//增加
+		// document.createElement();
+		// document.createTextNode();
+		// document.createComment();
+		// document.createDocumentFragment()；
+		//插入
+		// PARENTNODE.appendChild(Node); 添加到最后
+		// PARENTNODE.insertBefore(newItem, existingItem); 将newItem插入到existingItem前
+		//删除
+		// PARENT.removeChild(CHILD); 删除子节点CHILD,并返回CHILD
+		// CHILD.remove(); 删除本身
+		//替换
+		// parent.replaceChild(newItem,originItem)
+
+		// Element节点属性方法
+		// elem.innerHTML
+		// elem.innerText(火狐不兼容)  elem.textContent(老版本IE不好使)
+		// elem.setAttribute('className','classValue')
+		// elem.getAttribute('className')
+		// elem.className = 'str' //直接改变class属性
+
+		//原型链上实现insertAfter, 功能参照insertBefore
+		// Element.prototype.insertAfter = function(newItem, existingItem){
+		// 	if(existingItem.nextElementSibling){
+		// 		this.insertBefore(newItem, existingItem.nextElementSibling);
+		// 	}else{
+		// 		this.appendChild(newItem);
+		// 	}
+		// }
 	</script>
 </body>
 </html>

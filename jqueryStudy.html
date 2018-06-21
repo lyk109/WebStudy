@@ -33,14 +33,18 @@
 			</ul>
 		</li>
 	</ul>
+	<input type="button" value="stop">
 	<script type="text/javascript">
 		$(function(){
 			$("#nav>li").mouseenter(function(){
-				$(this).children('ul').show();
+				$(this).children('ul').slideDown(2000);
 				})
 			$("#nav>li").mouseleave(function(){
-				$(this).children('ul').hide();
+				$(this).children('ul').slideUp(2000);
 				})
+			$("input").click(function(){
+				$("ul>li>ul").stop();
+			})
 		})
 	</script>
 </body>
