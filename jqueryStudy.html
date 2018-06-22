@@ -7,45 +7,17 @@
 	<script type="text/javascript" src="jquery.js"></script>
 </head>
 <body>
-	<ul id="nav">
-		<li>
-			<div>一级菜单1</div>
-			<ul>
-				<li>二级菜单1</li>
-				<li>二级菜单2</li>
-				<li>二级菜单3</li>
-			</ul>
-		</li>
-		<li>
-			<div>一级菜单2</div>
-			<ul>
-				<li>二级菜单1</li>
-				<li>二级菜单2</li>
-				<li>二级菜单3</li>
-			</ul>
-		</li>
-		<li>
-			<div>一级菜单3</div>
-			<ul>
-				<li>二级菜单1</li>
-				<li>二级菜单2</li>
-				<li>二级菜单3</li>
-			</ul>
-		</li>
-	</ul>
-	<input type="button" value="stop">
-	<script type="text/javascript">
-		$(function(){
-			$("#nav>li").mouseenter(function(){
-				$(this).children('ul').slideDown(2000);
-				})
-			$("#nav>li").mouseleave(function(){
-				$(this).children('ul').slideUp(2000);
-				})
-			$("input").click(function(){
-				$("ul>li>ul").stop();
-			})
-		})
+	<div id="wrapper">
+
+	</div>
+	<script>
+		var money = 100;
+		$("div").on("click",(function(money){
+			return function(){
+				console.log(money);
+			}
+		})(money))
+		money = 0;
 	</script>
 </body>
 </html>
