@@ -8,16 +8,14 @@
 </head>
 <body>
 	<div id="wrapper">
-
+		<div id="content">123</div>
 	</div>
 	<script>
 		var money = 100;
-		$("div").on("click",(function(money){
-			return function(){
-				console.log(money);
-			}
-		})(money))
-		money = 0;
+		$("div").on("click","div",function () {
+			console.log(this.innerHTML);
+			console.log(this);
+		})
 	</script>
 </body>
 </html>

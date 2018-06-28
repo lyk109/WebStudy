@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag</title>
+	<style>
+		div{
+			float: left;
+			width: 200px;
+			height: 500px;
+			border: 1px solid black;
+		}
+		p{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p draggable=true id="darg1">drag element 1</p>
+		<p draggable=true>drap element 2</p>
+	</div>
+	<div></div>
+	<script type="text/javascript">
+		// e.dataTransfer.setData只能用于dragstart事件
+		// e.dataTransfer.getData只能用于drop事件
+		
+		document.ondragstart = function(e){
+			var dragEle = e.target;
+			dragEle.style.opacity = 0.5;
+			dragEle.id = "choosed";
+			e.dataTransfer.setData("Text",dragEle.id);
+		}
+
+		document.ondragend = function(e){
+			var dragEle = e.target;
+			dragEle.style.opacity = 1; 
+			dragEle.removeAttribute("id")
+		}
+
+		document.ondragover = function(e){
+			var dropEle = e.target;
+			if(dropEle.nodeName == "DIV"){
+				e.preventDefault();
+			}
+		}
+
+		document.ondrop = function(e){
+			var dropEle = e.target;
+			if(dropEle.nodeName == "DIV"){
+				var data = e.dataTransfer.getData("Text");
+				e.target.appendChild(document.getElementById(data));
+			}
+		}
+	</script>
+	
+</body>
+</html>
