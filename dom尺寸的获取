@@ -1,3 +1,10 @@
-offsetHeight/offsetWidth	获取元素的高度/宽度，包括content，padding，border(还包括滚动条)；
-scrollHeight	计算滚动容器大小，包括不可见部分，包括padding。若没有滚动条，则包括content+padding，不包含border;
-clientHeight/clientWidth	可视区，包括padding+content，然后减去滚动条的宽度。
+offsetHeight/offsetWidth：获取元素的高度/宽度，包括content，padding，border(还包括滚动条)；
+scrollHeight：计算滚动容器大小，包括不可见部分，包括padding。若没有滚动条，则包括content+padding，不包含border;
+clientHeight/clientWidth：可视区，包括padding+content，然后减去滚动条的宽度。
+
+
+e.screenX/e.screenY:各浏览器表现一致
+e.clientX：获取相对于窗口的位置，忽略滚动距离。需另外加上document.documentElement.scrollLeft或document.body.scrollLeft
+e.offsetX：相对于触发事件对象，
+e.pageX：获取在页面中的位置，会考虑滚动条的距离（ie9以下不支持）
+e.x
