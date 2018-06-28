@@ -1,0 +1,82 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#dv1{
+	position: relative;
+	width: 500px;
+	height: 500px;
+	border: 1px solid black;
+}
+
+#dv2{
+	position: absolute;
+	float: left;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 200px;
+	height: 200px;
+	background-color: #f00;
+}
+
+div.ani{
+	letter-spacing: 1em;
+	line-height: 0.5em;
+	word-wrap: break-word;
+	width: 480px;
+	height: 320px;
+	margin: 50px auto;
+	overflow: hidden;
+	box-shadow: 0 0 5px rgba(0,0,0,1);
+	background-size: cover;
+	background-position: center;
+	-webkit-animation-name: "loops";
+	-webkit-animation-duration: 20s;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes "loops"{
+	0%{
+		background: url("../images/1.jpg");
+	}
+	25%{
+		background: url("../images/2.jpg");
+	}
+	50%{
+		background: url("../images/3.jpg");
+	}
+	75%{
+		background: url("../images/4.jpg");
+	}
+	100%{
+		background: url("../images/1.jpg");
+	}
+}
+
+td{
+	width: 100px;
+	height: 20px;
+	border: 1px solid black;
+}
+
+td:hover{
+	background-color: yellow;
+}
+
+table{
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tr:nth-child(odd){
+	background-color: #fff;
+}
+
+tr:nth-child(even){
+	background-color: #808080;
+}

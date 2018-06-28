@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学生信息</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		form{
+			width: 600px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		label{
+			display: block;
+		}
+		fieldset{
+			padding: 10px;
+		}
+		input,meter{
+			padding-left: 5px;
+			margin: 10px 0;
+			width: 100%;
+			height: 32px;
+			line-height: 32px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+		meter{
+			padding-left: 0;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>学生档案</legend>
+			<label for="username">姓名：</label>
+			<input type="text" placeholder="请输入姓名" name="username" autocomplete="off" id="username"><br>
+			<label>手机号码：</label>
+			<input type="tel" name="phoneNumber" pattern="^(\+86)?1\d{10}$" id="tel"><br>
+			<label>邮箱地址：</label>
+			<input type="email" name="email"><br>
+			<label>所属学院：</label>
+			<input type="text" list="schools" placeholder="请选择"><br>
+			<datalist id="schools">
+				<option value="文学院"></option>
+				<option value="经济学院"></option>
+				<option value="法学院"></option>
+				<option value="医学院"></option>
+				<option value="电子工程学院"></option>
+				<option value="艺术学院"></option>
+			</datalist>
+			<label>入学成绩：</label>
+			<input type="number" min="0" max="500" value="0"><br>
+			<label>基础水平：</label>
+			<meter max="100" min="0" low="40" high="80" value="0"></meter><br>
+			<label>入学日期：</label>
+			<input type="date" name="checkInDate"><br>
+			<label>毕业日期：</label>
+			<input type="date" name="checkOutDate"><br>
+			<input type="submit" value="提交">
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+		document.getElementById('tel').oninvalid = function(){
+			this.setCustomValidity("请输入11位手机号");
+		}
+		document.getElementsByTagName('meter')[0].onclick = function(e){
+			var event = e || window.event;
+			var value = Math.floor(((event.pageX - this.offsetLeft)/this.offsetWidth)*100);
+			this.value = value;
+		}
+	</script>
+</body>
+</html>

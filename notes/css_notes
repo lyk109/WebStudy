@@ -1,5 +1,5 @@
 /*注释内容*/
-css:cascading style sheets
+css: cascading style sheets
 
 html应用css的三种常用方式：
 	1、行间样式
@@ -22,7 +22,7 @@ html应用css的三种常用方式：
 	!important //最重要的
 	id选择器：#id-value{}  //id一一对应
 	class选择器：.class-value{}  //class多对多
-	tag选择器：tag{}  
+	tag选择器：tag{}
 	wildcard选择器：*{}  //用来初始化所有标签
 	attribute选择器：[id[="value"]]{}  //有id属性的都被选出
 
@@ -50,7 +50,7 @@ css选择器权重计算（256进制）: 当值相同时，以最后出现的为
 字体：
 	font-size (字体高)
 	font-weight (字体加粗) lighter normal bold 100 200 300 ... 900
-	font-style: (字体样式) italic 
+	font-style: (字体样式) italic
 	font-family: (字体) arial
 
 	颜色：
@@ -76,12 +76,12 @@ css选择器权重计算（256进制）: 当值相同时，以最后出现的为
 		background-repeat: no-repeat;
 	padding区域(内边距)：
 
-	border区域(外壁)：	
+	border区域(外壁)：
 		border: 1px solid black;
 		border-width:1px;
 		border-style:solid;
 		border-color:black;
-		border-top-color:transparent; 
+		border-top-color:transparent;
 		border-radius:50%;
 	//练习画三角形
 
@@ -102,7 +102,7 @@ css选择器权重计算（256进制）: 当值相同时，以最后出现的为
 		color:#424242
 	}
 	a img{
-		border:0px; 
+		border:0px;
 	}
 	ul{
 		list-style:none;
@@ -112,7 +112,7 @@ css选择器权重计算（256进制）: 当值相同时，以最后出现的为
 	z-index:0; //z-index大的覆盖小的
 	绝对定位：脱离原来位置进行定位，每个absolute是一个新的层。如果父级中有定位元素，则相对于该元素定位，如果没有，相对于浏览器边框
 	.wrapper{
-		position:absolute;  
+		position:absolute;
 		left: 100px;         //距离浏览器左边框距离
 		top: 100px;		     //距离浏览器上边框距离
 	}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		span{
+			display: inline-block;
+			width: 80px;
+			padding: 5px;
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+	<form action="" method="GET">
+		<!--
+		<span>text: </span><input type="text" name="text"><br>
+		<span>password: </span><input type="password" name="password"><br>
+		<span>email: </span><input type="email" name="email" multiple=""><br>
+		<span>tel: </span><input type="tel" name="tel"><br>
+		<span>number: </span><input type="number" name="number"><br>
+		<span>url: </span><input type="url" name="url"><br>
+		<span>search: </span><input type="search" name="search"><br>
+		<span>range: </span><input type="range" max="100" min="10" name="rangeNum"><br>
+		<span>color: </span><input type="color" name="color"><br>
+		<span>time: </span><input type="time" name="time"><br>
+		<span>date: </span><input type="date" name="date"><br>
+		<span>datetime: </span><input type="datetime-local" name="datetime"><br>
+		<span>file: </span><input type="file" name="file" multiple=""><br>
+ 		-->
+
+		<!--
+		placeholder: 提示信息
+		autofocus: 自动获取焦点
+		autocomplete: on/off 自动补全提示
+		require： 必须填写的字段
+		pattern： 填写内容的匹配格式
+		multiple: 选择多个值
+		form: 制定表单id，伴随该表单提交
+		 -->
+
+		<!--
+		<span>用户名：</span><input type="text" placeholder="请输入用户名" autofocus="autofocus" autocomplete="on" name="username"><br>
+		<span>手机号：</span><input type="tel" required="required" pattern="^(\+86)?1\d{10}$" name="tel"><br>
+		-->
+		<!-- submit -->
+		<input type="submit" value="submit">
+	</form>
+
+	<progress value="20" max="100"></progress>
+	<meter low="20" high="80" max="100" min="0" value="10"></meter>
+	<meter low="20" high="80" max="100" min="0" value="50"></meter>
+	<meter low="20" high="80" max="100" min="0" value="100"></meter>
+
+	<script type="text/javascript">
+		// oninput: 监听当前指定元素的内容改变：只要内容改变，就会触发该事件；
+		// oninvalid: 当验证不通过时触发 --- this.setCustomValidity("请输入合法的11位手机号")；
+	</script>
+</body>
+</html>

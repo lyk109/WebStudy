@@ -44,7 +44,7 @@
 // 			this.pos = this.pos + 1;
 // 		}else{
 // 			return 'at last position';
-// 		}				
+// 		}
 // 	}
 // 	this.prev = function(){
 // 		if(this.pos > 0){
