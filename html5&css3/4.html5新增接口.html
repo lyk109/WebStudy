@@ -7,7 +7,7 @@
 <body>
 	<!-- ononline: 网络连通时触发该事件 -->
 	<!-- onoffline: 网络断开时触发该事件 -->
-	<!-- 
+	<!--
 	<script type="text/javascript">
 		window.addEventListener("online", function(){alert("network connect")}, false);
 		window.addEventListener("offline",function(){alert("network disconnect")}, false);
@@ -18,6 +18,18 @@
 	<!-- requestFullScreen(): 开启全屏 (适用于element)-->
 	<!-- cancelFullScreen(): 关闭全屏 (适用于document)-->
 	<!-- fullScreenElement: 判断是否为全屏状态 (适用于document)-->
+	<!--
+	<img src="../images/5.jpg" alt="picture">
+	<script type="text/javascript">
+		let pic = document.getElementsByTagName("img")[0];
+		pic.addEventListener("click",function(){
+			this.webkitRequestFullScreen();
+		},false)
+		document.addEventListener("click",function(){
+			document.webkitCancelFullScreen();
+		},false)
+	</script>
+	 -->
 
 	<!-- FileReader: 读取文件内容 -->
 	<!-- readAsText() -->
@@ -25,6 +37,7 @@
 	<!-- readAsDataURL() -->
 	<!-- abort() -->
 
+	<!-- 拖拽 -->
 	<!-- draggable = "true" -->
 	<!-- ondrag -->
 	<!-- ondragstart -->
@@ -35,5 +48,108 @@
 	<!-- ondragover 阻止默认行为-->
 	<!-- ondrop -->
 	<!-- ondragleave -->
+
+	<!-- 获取位置 -->
+	<!--
+	<script type="text/javascript">
+		function getLocation(){
+			if(navigator.geolocation){
+				// navigator.geolocation(success,error,option)
+				/*1.获取地理位置信息成功之后的回调
+				 *2.获取地理位置信息失败之后的回调
+				 *3.调整获取位置信息的方式(anableHighAccuracy: true/false,timeout: (ms), maximumAge: (重新获取时间ms))*/
+				navigator.geolocation.getCurrentPosition(showPosition, showError, {});
+			}else{
+				alert("geolocation is not supported by this browser");
+			}
+		}
+
+		function showPosition(position){
+			alert("Latitude: "+ position.coords.latitude + "Longitude: " +position.coords.longitude);
+		}
+
+		function showError(error){
+			switch(error.code){
+				case error.PERMISSION_DENIED:
+					alert("user denied the request for geolocation");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					alert("Location information is unavailable");
+					break;
+				case error.TIMEOUT:
+					alert("The request to get user location time out");
+					break;
+				case error.UNKNOWN_ERROR:
+					alert("An unknown error occurred");
+					break;
+			}
+		}
+		getLocation();
+	</script>
+	-->
+
+	<!-- web存储 -->
+	<!-- cookie: 只能存4k -->
+
+	<!-- sessionStorage: 存储在当前页面，页面关闭，数据消失。
+	setItem(key,value): 存储数据到本地，容量5M
+	getItem(key): 获取对应value
+	removeItem(key): 删除数据
+	clear(): 清空数据 -->
+	<!-- <input type="text" id="userName">
+	<input type="button" value="setData" id="setData">
+	<input type="button" value="removeData" id="removeData">
+	<input type="button" value="getData" id="getData">
+	<script type="text/javascript">
+		let text = document.getElementById("userName");
+		let setData = document.getElementById("setData");
+		let removeData = document.getElementById("removeData");
+		let getData = document.getElementById("getData");
+		setData.onclick = function(){
+			window.sessionStorage.setItem("userName",text.value);
+		}
+		getData.onclick = function(){
+			let value = window.sessionStorage.getItem("userName");
+			if(value){
+				let p = document.createElement('p');
+				p.innerHTML = value;
+				document.body.appendChild(p);
+			}
+		}
+		removeData.onclick = function(){
+			window.sessionStorage.removeItem("userName");
+		}
+	</script> -->
+
+	<!-- localStorage: 存储在浏览器，数据永远保存。
+	setItem(key,value): 存储数据到本地，容量20M
+	getItem(key): 获取对应value
+	removeItem(key): 删除数据
+	clear(): 清空数据 -->
+	<!-- <input type="text" id="userName">
+	<input type="button" value="setData" id="setData">
+	<input type="button" value="removeData" id="removeData">
+	<input type="button" value="getData" id="getData">
+	<script type="text/javascript">
+		let text = document.getElementById("userName");
+		let setData = document.getElementById("setData");
+		let removeData = document.getElementById("removeData");
+		let getData = document.getElementById("getData");
+		setData.onclick = function(){
+			window.localStorage.setItem("userName",text.value);
+		}
+		getData.onclick = function(){
+			let value = window.localStorage.getItem("userName");
+			if(value){
+				let p = document.createElement('p');
+				p.innerHTML = value;
+				document.body.appendChild(p);
+			}
+		}
+		removeData.onclick = function(){
+			window.localStorage.removeItem("userName");
+		}
+	</script> -->
+
 </body>
 </html>
