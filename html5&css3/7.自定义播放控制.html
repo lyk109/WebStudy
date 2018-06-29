@@ -3,12 +3,171 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Custom Player Control</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.videoPlayer{
+			width: 1080px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		video{
+			display: block;
+			width: 100%;
+		}
+		.controls{
+			position: relative;
+			width: 100%;
+			height: 40px;
+			background-color: #ccc;
+		}
+		.controls>.playButton{
+			position: absolute;
+			left:0;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.controls>.process{
+			position: absolute;
+			left: 100px;
+			width: calc(100% - 360px);
+			height: 40px;
+		}
+		.controls>.process>.clickBar,
+		.controls>.process>.currentBar,
+		.controls>.process>.fullBar{
+			position: absolute;
+			top:0;
+			bottom:0;
+			margin: auto 0;
+			height: 16px;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+		.controls>.process>.clickBar{
+			width: 100%;
+			z-index: 999;
+		}
+		.controls>.process>.currentBar{
+			width: 0%;
+			background-color: #888;
+			z-index: 1;
+
+		}
+		.controls>.process>.fullBar{
+			width: 100%;
+			background-color: #aaa;
+			z-index: 0;
+		}
+
+		.controls>.videoTime{
+			position: absolute;
+			right: 60px;
+			width: 200px;
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+		}
+		.controls>.fullScreen{
+			position: absolute;
+			right: 0;
+			width: 60px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
+	<div class="videoPlayer">
+		<video src="media/chrome.mp4"></video>
+		<div class="controls">
+			<div class="playButton">play/stop</div>
+			<div class="process">
+				<div class="clickBar"></div>
+				<div class="currentBar"></div>
+				<div class="fullBar"></div>
+			</div>
+			<div class="videoTime">
+				<span class="currentTime">00:00:00</span>
+				<span>|</span>
+				<span class="fullTime">00:00:00</span>
+			</div>
+			<div class="fullScreen">full</div>
+		</div>
+	</div>
 	<script type="text/javascript">
 		// 方法：load()	play()	pause()
 		// 属性：currentTime		duration	paused
 		// 事件：oncanplay	ontimeupdate	onended
+
+		//获取视频元素
+		let video = document.getElementsByTagName("video")[0];
+
+		//点击play/stop按钮，播放或停止
+		document.getElementsByClassName('playButton')[0].onclick = function(){
+			if(video.paused){
+				video.play();
+			}else{
+				video.pause();
+			}
+		}
+
+		//点击全屏按钮，全屏播放
+		document.getElementsByClassName('fullScreen')[0].onclick = function(){
+			if(video.requestFullScreen){
+				video.requestFullScreen();
+			}else if(video.webkitRequestFullScreen){
+				video.webkitRequestFullScreen();
+			}else if(video.msRequestFullScreen){
+				video.msRequestFullScreen();
+			}else if(video.mozRequestFullScreen){
+				video.mozRequestFullScreen();
+			}
+		}
+
+		//将秒数转化为格式时间
+		function getFomatTime(time){
+			let hour = Math.floor(time/3600);
+			hour = hour >= 10 ? hour : '0' + hour;
+			let minute = Math.floor(time%3600/60);
+			minute = minute >= 10 ? minute : '0' + minute;
+			let second = Math.floor(time%60);
+			second = second >= 10 ? second : '0' + second;
+			return hour+':'+minute+':'+second;
+		}
+
+		//获取视频总时长
+		video.oncanplay = function(){
+			let fullTime = video.duration;
+			document.getElementsByClassName('fullTime')[0].innerHTML = getFomatTime(fullTime);
+		}
+
+		//播放过程中进度条和时间的变化
+		video.ontimeupdate = function(){
+			let current = video.currentTime;
+			let fullTime = video.duration;
+			document.getElementsByClassName('currentTime')[0].innerHTML = getFomatTime(current);
+			let currentBarPer = 100*current/fullTime + '%';
+			document.getElementsByClassName('currentBar')[0].style.width  = currentBarPer;
+		}
+
+		//点击进度条调整播放进度
+		document.getElementsByClassName('clickBar')[0].onclick = function(e){
+			let event = e || window.event;
+			let currentBar = event.offsetX;
+			console.log(window.getComputedStyle(event.target).width);
+			let current = currentBar/parseInt(window.getComputedStyle(event.target).width);
+			let currentTime = Math.floor(current*video.duration);
+			video.currentTime = currentTime;
+		}
 	</script>
 
 </body>
