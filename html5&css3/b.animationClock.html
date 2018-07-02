@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		div.clock{
+			position: relative;
+			top: 0;
+			margin: 0 auto;
+			width: 200px;
+			height: 200px;
+			box-sizing: border-box;
+			border: 10px solid #ccc;
+			border-radius: 100px;
+		}
+		div.clock>ul>li{
+			position: absolute;
+			left: calc(50% - 3px);
+			bottom: 0;
+			width: 6px;
+			height: 20px;
+			background-color: #ccc;
+			transform-origin: 50% -350%;
+		}
+		div.clock>ul>li:nth-of-type(3n+1){
+			left: calc(50% - 4px);
+			width: 8px;
+		}
+		div.clock>ul>li:nth-of-type(1){
+			transform: rotateZ(0deg);
+		}
+		div.clock>ul>li:nth-of-type(2){
+			transform: rotateZ(30deg);
+		}
+		div.clock>ul>li:nth-of-type(3){
+			transform: rotateZ(60deg);
+		}
+		div.clock>ul>li:nth-of-type(4){
+			transform: rotateZ(90deg);
+		}
+		div.clock>ul>li:nth-of-type(5){
+			transform: rotateZ(120deg);
+		}
+		div.clock>ul>li:nth-of-type(6){
+			transform: rotateZ(150deg);
+		}
+		div.clock>ul>li:nth-of-type(7){
+			transform: rotateZ(180deg);
+		}
+		div.clock>ul>li:nth-of-type(8){
+			transform: rotateZ(210deg);
+		}
+		div.clock>ul>li:nth-of-type(9){
+			transform: rotateZ(240deg);
+		}
+		div.clock>ul>li:nth-of-type(10){
+			transform: rotateZ(270deg);
+		}
+		div.clock>ul>li:nth-of-type(11){
+			transform: rotateZ(300deg);
+		}
+		div.clock>ul>li:nth-of-type(12){
+			transform: rotateZ(330deg);
+		}
+		div.clock>div.center{
+			position: absolute;
+			left:calc(50% - 10px);
+			top:calc(50% - 10px);
+			width: 20px;
+			height: 20px;
+			background-color: #ccc;
+			border-radius: 10px;
+		}
+
+		div.clock>div.hours{
+			position: absolute;
+			left:calc(50% - 5px);
+			top:50%;
+			width: 10px;
+			height: 50px;
+			background-color: #ccc;
+			transform-origin: 50% 0%;
+			animation: hoursAni 43200s linear infinite;
+
+		}
+		@keyframes hoursAni{
+			0%{
+				transform: rotateZ(0deg);
+			}
+			100%{
+				transform: rotateZ(360deg);
+			}
+		}
+
+		div.clock>div.minutes{
+			position: absolute;
+			left:calc(50% - 3px);
+			top:50%;
+			width: 6px;
+			height: 60px;
+			background-color: #ccc;
+			transform-origin: 50% 0%;
+			animation: minutesAni 3600s linear infinite;
+		}
+		@keyframes minutesAni{
+			0%{
+				transform: rotateZ(0deg);
+			}
+			100%{
+				transform: rotateZ(360deg);
+			}
+		}
+
+		div.clock>div.seconds{
+			position: absolute;
+			left:calc(50% - 1px);
+			top:calc(50%);
+			width: 2px;
+			height: 68px;
+			background-color: #ccc;
+			transform-origin: 50% 0%;
+			animation: secondsAni 60s steps(60) infinite;
+		}
+		@keyframes secondsAni{
+			0%{
+				transform: rotateZ(0deg);
+			}
+			100%{
+				transform: rotateZ(360deg);
+			}
+		}
+
+		div.wingBox{
+			position: relative;
+			width: 200px;
+			height: 500px;
+			background-color: #7D6F69;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		div.body{
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 20px;
+			height: 350px;
+			background-color: black;
+			transform-origin: 50% 0%;
+			animation: moveTest 2s ease-in-out infinite;
+		}
+		div.body:after{
+			content:"";
+			position: absolute;
+			top: 100%;
+			left: -15px;
+			width: 50px;
+			height: 50px;
+			background-color: black;
+			border-radius: 25px;
+		}
+		@keyframes moveTest{
+			0%{
+				transform:rotateZ(12deg);
+			}
+			50%{
+				transform:rotateZ(-12deg);
+			}
+			100%{
+				transform:rotateZ(12deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div class="center"></div>
+		<div class="hours"></div>
+		<div class="minutes"></div>
+		<div class="seconds"></div>
+	</div>
+	<div class="wingBox">
+		<div class="body"></div>
+		<div class="tail"></div>
+	</div>	
+</body>
+</html>

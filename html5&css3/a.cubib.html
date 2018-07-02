@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cubic</title>
+	<style>
+		.cubic{
+			width: 200px;
+			height: 200px;
+			position: relative;
+			margin: 100px auto;
+			transform-style: preserve-3d;
+			transition: transform 10s linear;
+			perspective: 1px;
+		}
+		.cubic:hover{
+			transform: rotate3d(1,1,1,180deg);
+		}
+		.cubic>div{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			transform-origin: left top;
+		}
+		.cubic>div.front{
+			background-color: rgba(255,0,0,0.5);
+			transform: none;
+		}
+		.cubic>div.back{
+			background-color: rgba(255,255,0,0.5);
+			transform: translateZ(-200px);
+		}
+		.cubic>div.left{
+			background-color: rgba(0,255,0,0.5);
+			transform: rotateY(90deg);
+		}
+		.cubic>div.right{
+			background-color: rgba(0,255,255,0.5);
+			transform: translateX(200px) rotateY(90deg);
+		}
+		.cubic>div.top{
+			background-color: rgba(0,0,255,0.5);
+			transform: rotateX(-90deg);
+		}
+		.cubic>div.bottom{
+			background-color: rgba(255,0,255,0.5);
+			transform: translateY(200px) rotateX(-90deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="cubic">
+		<div class="front"></div>
+		<div class="back"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	</div>
+	<!-- <script type="text/javascript">
+		let cubic = document.getElementsByClassName('cubic')[0];
+		cubic.onmousedown = function(e){
+			let x = e.clientX;
+			let y = e.clientY;
+			document.onmousemove = function(e){
+				let xChange = e.clientX - x;
+				let yChange = e.clientY - y;
+			}
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	</script> -->
+	
+</body>
+</html>

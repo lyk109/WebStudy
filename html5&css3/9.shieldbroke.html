@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shield broke</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #4ba6ab;
+		}
+		.shieldBox{
+			position: relative;
+			width: 440px;
+			margin: 100px auto;
+		}
+		img{
+			transition: transform 1s;
+		}
+		.shieldBox:active img:nth-of-type(1){
+			transform: translate(100px,100px) rotate(30deg);
+		}
+		.shieldBox:active img:nth-of-type(2){
+			transform: translate(200px,-100px) rotate(80deg);
+		}
+		.shieldBox:active img:nth-of-type(3){
+			transform: translate(300px,200px) rotate(90deg);
+		}
+		.shieldBox:active img:nth-of-type(4){
+			transform: translate(250px,100px) rotate(-30deg);
+		}
+		.shieldBox:active img:nth-of-type(5){
+			transform: translate(100px,100px) rotate(-60deg);
+		}
+		.shieldBox:active img:nth-of-type(6){
+			transform: translate(100px,100px) rotate(75deg);
+		}
+
+		.shieldBox:active img:nth-of-type(7){
+			transform: translate(100px,100px) rotate(90deg);
+		}
+		.shieldBox:active img:nth-of-type(8){
+			transform: translate(100px,100px) rotate(110deg);
+		}
+		.shieldBox:active img:nth-of-type(9){
+			transform: translate(100px,100px) rotate(120deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="shieldBox">
+		<img src="images/shield_1_01.png" alt="1">
+		<img src="images/shield_1_02.png" alt="2">
+		<img src="images/shield_1_03.png" alt="3">
+		<img src="images/shield_1_04.png" alt="4">
+		<img src="images/shield_1_05.png" alt="5">
+		<img src="images/shield_1_06.png" alt="6">
+		<img src="images/shield_1_07.png" alt="7">
+		<img src="images/shield_1_08.png" alt="8">
+		<img src="images/shield_1_09.png" alt="9">
+	</div>
+</body>
+</html>

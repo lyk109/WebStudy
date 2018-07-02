@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transition</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left: 200px;
+			top: 0;
+			background-image: linear-gradient(to right, red ,black);
+			/*transition: left 2s linear 0s, background-color 2s linear 0s;*/
+			transition: all 2s linear 0s; //效率低
+		}
+		div:active{
+			/*left: 200px;*/
+			/*background-color: red;*/
+			/*transform: translate(200px,200px);*/
+			/*transform: translateX(200px);*/
+			/*transform: scale(0.3,0.3);	*/
+			/*transform: rotate(90deg);*/
+			/*transform: skew(30deg);*/
+			transform: rotate3d(1,0,1,360deg);
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
