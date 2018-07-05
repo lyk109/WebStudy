@@ -1,4 +1,4 @@
-// require('net').createServer(function(sock){
+9090// require('net').createServer(function(sock){
 // 	sock.on('data',function(data){
 // 		sock.write('HTTP/1.1 200 OK\r\n');
 // 		sock.write('Content-Length: 10\r\n');
@@ -20,4 +20,4 @@ require('net').createServer(function(sock){
 		sock.write('0\r\n');
 		sock.write('\r\n');
 	})
-}).listen(9090,'127.0.0.1')
+}).listen(9090)

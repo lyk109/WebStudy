@@ -14,93 +14,61 @@
 
 ​	NET模块提供   `createServer(fn)` 方法来创建服务器，当服务器被连接时，服务器便会生成一个socket对象并传给函数回调函数`fn`，同时执行该函数。下面是一个服务器端例子：
 
-> var net = require('net');
->
-> 
->
-> // 当收到客户端连接请求时，执行下面的函数
->
-> var server = net.createServer(function(socket){
->
-> ​	console.log('server connected');
->
-> ​	// 当接收到客户端发送的数据时，执行下面函数
->
-> ​	socket.on('data', function(data){
->
-> ​		//打印客户端发送过来的数据
->
-> ​		console.log(data.toString())
->
-> ​		//向客户端发送 'Hello, this is server!\n\r'
->
-> ​		socket.write('Hello, this is server!\n\r');
->
-> ​		//向客户端发送 'Bye!\n\r'，并结束连接。
->
-> ​		socket.end('Bye!\n\r')
->
-> ​	})
->
-> ​	//当连接断开时，执行下面函数
->
-> ​	socket.on('end',function(){
->
-> ​		console.log('sever disconnected')
->
-> ​	})
->
-> })
->
-> 
->
-> // 开启服务器，监听端口5000，同时执行下面函数
->
-> server.listen(5000,function(){
->
-> ​	console.log("server started: port 5000.")
->
-> })
+```javascript
+var net = require('net');
+
+// 当收到客户端连接请求时，执行下面的函数
+var server = net.createServer(function(socket){
+	console.log('server connected');
+	// 当接收到客户端发送的数据时，执行下面函数
+	socket.on('data', function(data){
+		//打印客户端发送过来的数据
+		console.log(data.toString())
+		//向客户端发送 'Hello, this is server!\n\r'
+		socket.write('Hello, this is server!\n\r');
+		//向客户端发送 'Bye!\n\r'，并结束连接。
+		socket.end('Bye!\n\r')
+	})
+	//当连接断开时，执行下面函数
+	socket.on('end',function(){
+		console.log('sever disconnected')
+	})
+})
+
+
+// 开启服务器，监听端口5000，同时执行下面函数
+server.listen(5000,function(){
+	console.log("server started: port 5000.")
+})
+```
 
 ### 4.客户端程序构建
 
 ​	NET模块提供   `connect({port:5000},fn)`方法来创建TCP连接，该方法第一个参数传入一个对象，对象中port可以指定TCP端口。当连接到服务器成功时，则执行函数 `fn`。下面是一个客户端程序例子（可结合上面服务器端进行连接测试）：
 
-> var net = require('net');
->
-> // 发起TCP连接，当客户端成功连接到服务器时，执下面函数
->
-> var client = net.connect({port: 5000}, function(){
->
-> ​	console.log('client connected')；
->
-> ​	// 向服务器发送 'hello, this is client!\n\r'
->
-> ​	client.write('hello, this is client!\n\r');
->
-> })
->
-> // 当接收到服务器端数据时，执行下面函数
->
-> client.on('data',function(data){
->
-> ​	// 打印服务器发来的数据
->
-> ​	console.log(data.toString());
->
-> ​	// 结束连接
->
-> ​	client.end();
->
-> })
->
-> // 当连接结束时，执行下面函数
->
-> client.on('end',function(){
->
-> ​	console.log('client disconnected');
->
-> })
+```javascript
+var net = require('net');
+
+// 发起TCP连接，当客户端成功连接到服务器时，执下面函数
+var client = net.connect({port: 5000}, function(){
+	console.log('client connected')；
+	// 向服务器发送 'hello, this is client!\n\r'
+	client.write('hello, this is client!\n\r');
+})
+
+// 当接收到服务器端数据时，执行下面函数
+client.on('data',function(data){
+	// 打印服务器发来的数据
+	console.log(data.toString());
+	// 结束连接
+	client.end();
+})
+
+// 当连接结束时，执行下面函数
+client.on('end',function(){
+	console.log('client disconnected');
+})
+```
 
 ### 5.服务器客户端执行顺序
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>360Case</title>
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="../jquery.fullPage.min.js"></script>
+</head>
+<body>
+	<div id="360page">
+		<div class="section first">1
+		</div>
+		<div class="section second">2
+		</div>
+		<div class="section third">
+			<div class="slide">3 1</div>
+			<div class="slide">3 2</div>
+			<div class="slide">3 3</div>
+			<div class="slide">3 4</div>
+		</div>
+		<div class="section fourth">4
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$("#360page").fullpage({
+				autoScrolling: true,
+				scrollHorizontally: true,
+				sectionsColor:['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+				slidesColor:['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+			})
+			$.fn.fullpage.setAllowScrolling(false);
+		});
+	</script>
+</body>
+</html>
