@@ -22,6 +22,6 @@ server.on('request',function(req,res){
 	}
 })
 
-server.listen(80, function(){
+server.listen(8000, function(){
 	console.log("http服务器已就绪...");
 })
