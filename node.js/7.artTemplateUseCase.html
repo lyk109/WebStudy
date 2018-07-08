@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>art-tempalte</title>
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="node_modules/art-template/lib/template-web.js"></script>
+</head>
+<body>
+
+	<!-- template definition -->
+	<script type="text/template" id="test1">
+		<%for (var i = 0; i < items.length; i++){%>
+		<div class="item">
+			<a href="#" class="cover"><img src="<%=items[i].path%>"></a>
+			<div class="bottom">
+				<a href="#"><%=items[i].name%></a>
+				<div class="rightBox">
+					<span class="icon-heart">reads: <%=items[i].star%></span>
+					<span class="icon-commit">comments: <%=items[i].message%></span>
+				</div>
+			</div>
+		</div>
+	<%}%>
+	</script>
+
+	<!-- javascrit code -->
+	<script type="text/javascript">
+		$(function() {
+			$(.getMore).click(function() {
+				$.ajax({
+					url: 'artTem.php',
+					type: 'get',
+					success: function(data) {
+						console.log(data);
+						var jsArr = JSON.parse(data);
+						var obj = {
+							items: jsArr
+						};
+						var result = template('test1', obj);
+						$(".container").append(result);
+					}
+				});
+			});
+		});
+	</script>
+
+</body>
+</html>
