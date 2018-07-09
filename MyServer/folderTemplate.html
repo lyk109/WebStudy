@@ -10,19 +10,49 @@
 	<div class="container">
 		{{ each files }} <a class="{{ $value.className }}" href="{{ $value.url }}"><span>{{ $value.name }}</span></a> {{ /each }}
 	</div>
+	<div class="shadow"></div>
+	<img class="showImg"></img>
 	<script type="text/javascript">
-		document.onloa = function() {
-			var imgs = document.getElementsByClassName('image');
-			for(var i = 0; i < imgs.length; i++){
-				imgs[i].style.backgroundImage = imgs[i].getAttribute('href');
-				console.log(imgs[i].getAttribute('href'));
-			}
-		}
 		var imgs = document.getElementsByClassName('image');
 			for(var i = 0; i < imgs.length; i++){
 				imgs[i].style.backgroundImage = 'url('+ imgs[i].getAttribute('href') +')';
 				console.log(imgs[i].getAttribute('href'));
 			}
+
+		//mouse enter image element, image enlarge or shrink with mousewheel event
+		// $('.image').on('mouseover', function(e) {
+		// 	var target = $(e.currentTarget)
+		// 	document.onkeydown = function(e) {
+		// 		if(e.key == "Shift"){
+		// 			document.onmousewheel = function(e) {
+		// 				if(e.deltaY > 0){
+		// 					target.animate({width: "-=10px",height: "-=10px"}, 0);
+		// 				}
+		// 				if(e.deltaY < 0){
+		// 					target.animate({width: "+=10px",height: "+=10px"}, 0);
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	document.onkeyup = function() {
+		// 			document.onmousewheel = null;
+		// 	}
+		// })
+		// $('.image').on('mouseout', function() {
+		// 	document.onkeydown = null;
+		// })
+
+		$('.image').on('click', function(e) {
+			e.preventDefault();
+			var imghref = $(e.currentTarget).attr('href');
+
+			$('div.shadow').show();
+			$('.showImg').attr('src', imghref).show(100);
+		})
+		$('div.shadow,img.showImg').on('click', function() {
+			$('.showImg').hide(100);
+			$('div.shadow').hide();
+		})
 	</script>
 </body>
 </html>

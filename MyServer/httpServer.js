@@ -8,15 +8,17 @@ var util = require('util'); //util.inspect(request, {depth: null})
 var server = http.createServer();
 
 // root Directory
-var www = 'C:/Users/10959/Desktop/GitRepo/WebStudy/MyServer'
+var www = 'C:/Users/liuyk/Desktop/GitRepos/WebStudy/MyServer'
 
 // handle Request
 server.on('request', function(req, res) {
-	
+
 	//get request source path
 	var url = req.url;
 	var path = www + url;
-	console.log(url);
+
+	path = path.replace(/\%20/g, ' ');
+	console.log(path);
 
 	//assess the type of path
 	fs.stat(path, function(err, stat) {
@@ -29,7 +31,6 @@ server.on('request', function(req, res) {
 
 		// if path is a directory
 		if (stat.isDirectory()) {
-			console.log(2);
 			//read template file
 			var folderTemplate = fs.readFileSync(www + '/folderTemplate.html').toString();
 			var filesPath = fs.readdirSync(path);
@@ -56,7 +57,6 @@ server.on('request', function(req, res) {
 
 		//if path is a file
 		else if (stat.isFile()) {
-			console.log(3);
 			fs.readFile(path, function(err, data) {
 
 				if (err) {
@@ -78,9 +78,10 @@ server.on('request', function(req, res) {
 				} else if (/\.js$/.test(path)) {
 					res.setHeader('Content-Type', 'application/javascipt; charset: utf-8');
 					res.end(data.toString());
+				} else if (/\.pdf$/.test(path)) {
+					res.end(data);
 				} else {
-					res.statusCode = 404;
-					res.end();
+					res.end(data);
 				}
 			})
 		}
