@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href='/folderTemplate.css'>
+	<script type="text/javascript" src='/jquery.js'></script>
+</head>
+<body>
+	<div class="container">
+		{{ each files }} <a class="{{ $value.className }}" href="{{ $value.url }}"><span>{{ $value.name }}</span></a> {{ /each }}
+	</div>
+	<script type="text/javascript">
+		document.onloa = function() {
+			var imgs = document.getElementsByClassName('image');
+			for(var i = 0; i < imgs.length; i++){
+				imgs[i].style.backgroundImage = imgs[i].getAttribute('href');
+				console.log(imgs[i].getAttribute('href'));
+			}
+		}
+		var imgs = document.getElementsByClassName('image');
+			for(var i = 0; i < imgs.length; i++){
+				imgs[i].style.backgroundImage = 'url('+ imgs[i].getAttribute('href') +')';
+				console.log(imgs[i].getAttribute('href'));
+			}
+	</script>
+</body>
+</html>
