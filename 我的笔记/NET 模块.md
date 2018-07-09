@@ -8,7 +8,7 @@
 
 ​	使用  `require`方法引入net模块，即可使用net模块的方法。
 
-​	`var net = require('net')`	
+ 	 `var net = require('net')`	
 
 ### 3. 服务器端构建
 
