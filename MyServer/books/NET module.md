@@ -1,6 +1,6 @@
 ## NET 模块
 
-###1. 概念
+### 1. 概念
 
 ​	NET模块与HTTP模块，前者是基于TCP的封装，而后者本质是TCP层，但是做了比较多的数据封装，我们视之为更高层。
 
@@ -86,4 +86,4 @@ client.on('end',function(){
 
    client.on('end',fn)和server.on('end',fn): 当连接结束时，执行fn。
 
-**备注：**TCP连接的结束可以由client和server任意一方发起。
+**备注：** TCP连接的结束可以由client和server任意一方发起。
