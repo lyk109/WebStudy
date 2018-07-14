@@ -1,21 +1,15 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
 
-var server = http.createServer();
-server.on('request', function(req, res) {
-	var path = req.url;
-	if (path == '/') {
-		fs.readFile('index.html', function(err,data) {
-			if(err){
-				res.end('failed to read file');
-			}else{
-				res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-				res.end(data.toString());
-			}
-		})
-	}
+var app = express();
+
+// app.use('/public/', express.static('./public/'));
+
+app.post('/post', function(req, res) {
+	console.log(req);
 })
 
-server.listen(9000, function() {
-	console.log('server is ready...');
+app.use(express.static('./'));
+
+app.listen(9000, function() {
+	console.log('app server is online...')
 })
