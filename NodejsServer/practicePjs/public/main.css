@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body{
+	height: 100%;
+	width: 800px;
+	margin: 0 auto;
+	background: url(bgi.png);
+}
+
+ul{
+	list-style: none;
+}
+
+h1{
+	padding-top: 50px;
+}
+
+a{
+	text-decoration: none;
+}
+
+.allClientList a{
+	font-size: 20px;
+	color: #00aaff;
+}
+
+.allClientList a:hover{
+	font-weight: bold;
+}
