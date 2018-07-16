@@ -89,7 +89,7 @@
 			var nameList = document.getElementsByClassName('name');
 			var nameNum = nameList.length;
 			for(var i = 0; i < nameNum; i++){
-				nameList[i].style.backgroundColor = '';
+				nameList[i].className = 'name';
 			}
 			randomNum = []
 			var j = 0;
@@ -97,7 +97,7 @@
 				var random = Math.floor(nameNum*Math.random())
 				if(randomNum.indexOf(random) < 0){
 					randomNum.push(random);
-					nameList[random].style.backgroundColor = 'red'
+					nameList[random].className = 'name choosedName';
 					j++;
 				}
 			}

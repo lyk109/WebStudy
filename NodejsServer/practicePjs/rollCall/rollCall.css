@@ -17,6 +17,15 @@ div#nameArea{
 	float: left;
 	margin-left: 20%;
 }
+div#nameArea li{
+	float: left;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 24px;
+	text-align: center;
+
+}
 div#controlArea{
 	width: 10%;
 	height: 100%;
@@ -28,11 +37,13 @@ li.controlButton{
 	height: 50px;
 }
 input.choosedButton{
-	background-color: #f00;
+	background-color: #000;
+	color: #fff;
 }
 input#aOdName{
 	width: calc(100% - 4px);
 }
-li.namelist.called{
-	background-color: #f00;
+li.name.choosedName{
+	background-color: #808080;
+	color: #fff;
 }

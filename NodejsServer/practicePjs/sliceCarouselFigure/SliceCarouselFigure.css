@@ -20,8 +20,8 @@
 			position: relative;
 		}
 		div.container.show{
-			margin-top: 200px;
-			transform: rotate3d(-1,-1,0,30deg);
+			margin-top: 100px;
+			transform: rotate3d(-1,1,-0.1,30deg);
 		}
 		div.container>li{
 			width: 20%;

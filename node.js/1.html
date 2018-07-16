@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="">1</a>
+	<a href="">2</a>
+	<script type="text/javascript">
+		document.onreadystatechange = function() {
+			if (document.readyState === 'complete') {
+				for(var i = 0; i < 10000000000; i++) {};
+			}
+		};
+	</script>
+	<a href="">3</a>
+	<a href="">4</a>
+	<a href="">5</a>
+</body>
+</html>
