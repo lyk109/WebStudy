@@ -20,6 +20,7 @@
 			position: relative;
 		}
 		div.container.show{
+			display: none;
 			margin-top: 100px;
 			transform: rotate3d(-1,1,-0.1,30deg);
 		}
@@ -108,5 +109,12 @@
 			float: right;
 			cursor: pointer;
 			background-color: rgba(0,0,0,0.5);
+		}
+		h3{
+			display: inline-block;
+		}
+		h3:hover{
+			cursor: pointer;
+			background-color: #888;
 		}
 	</style>

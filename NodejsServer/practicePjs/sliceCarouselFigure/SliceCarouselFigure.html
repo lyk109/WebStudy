@@ -44,8 +44,8 @@
 			<div class="right">&gt;</div>
 		</div>
 		<!-- 原理展示用 -->
+		<h3 style="position: relative;color: #00f;left: -100px;top: 50px;">点击展示原理：</h3>
 		<div class="container show">
-			<h3 style="position: relative;left: -100px;top: -50px">原理展示：</h3>
 			<li>
 				<span></span>
 				<span></span>
@@ -113,6 +113,10 @@
 				index--;
 				$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
 			}, 2000);
+		})
+
+		$('h3').click(function() {
+			$('.container.show').toggle();
 		})
 	</script>
 </body>
