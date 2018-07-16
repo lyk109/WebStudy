@@ -106,7 +106,7 @@
 			$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
 		}, 2000);
 
-		$('div.layout').on('mouseover', function() {
+		$('div.container').on('mouseover', function() {
 			clearInterval(autoTimer);
 		}).on('mouseout', function() {
 			autoTimer = setInterval(function() {
