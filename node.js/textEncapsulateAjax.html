@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax异步请求</title>
+</head>
+<body>
+	<input type="button" value="获取网页案例" id="getHTMLtext">
+	<textarea name="" id="htmlFile" cols="100" rows="50"></textarea>
+	<script type="text/javascript">
+		console.log(document.getElementById('getHTMLtext'));
+		document.getElementById('getHTMLtext').onclick = function() {
+			console.log(1);
+			var xhl = new XMLHttpRequest();
+			xhl.onload = function() {
+				document.getElementById('htmlFile').innerHTML = xhl.responseText;
+			}
+			xhl.open('get', 'http://127.0.0.1:9001');
+			xhl.send();
+		}
+	</script>
+</body>
+</html>

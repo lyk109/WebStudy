@@ -1,0 +1,14 @@
+body{
+	height: 100%;
+	background-color: skyblue;
+}
+
+.defaultContent>h1{
+	width: 100%;
+	font-size: 50px;
+	position: absolute;
+	left: 0;
+	top: 45%;
+	text-align: center;
+	word-spacing: 10px;
+}

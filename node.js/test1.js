@@ -1,9 +1,49 @@
-var express = require('express');
+var mongoose = require('mongoose');
 
-var app = express();
+var Schema = mongoose.Schema;
 
-require('./route')(app);
+var db = mongoose.connect('mongodb://localhost:27017/studentsInfo');
 
-app.listen(9001, function() {
-	console.log('app server is online...')
+var studentSchema = new Schema({
+	name: {
+		type: String,
+		required: true,
+	},
+	gender: {
+		type: Number,
+		required: true,
+		enum: [0,1],
+		default: 0
+	},
+	grade: {
+		type: String,
+		require: true
+	}
+})
+
+var Student = mongoose.model('Student', studentSchema);
+
+var newStudent = new Student({
+	name: 'Jack',
+	gender: 1,
+	grade: 'grade 1'
+})
+
+// newStudent.save(function(err) {
+// 	if (err) {
+// 		console.log('database write failed');
+// 	} else {
+// 		console.log('database write successed');
+// 		mongoose.disconnect();
+// 	}
+// })
+
+Student.remove({name: 'Jack'}, function(err, info) {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('success');
+		console.log(info);
+		mongoose.disconnect();
+	}
 })

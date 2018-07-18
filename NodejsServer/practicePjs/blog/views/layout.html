@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+	{{ block 'head' }}{{ /block }}
+</head>
+<body>
+	<!-- common header -->
+	{{ include './_partials/header.html' }}
+
+	<!-- use different page content -->
+	{{ block 'content' }}
+		{{ include './_partials/default.html' }}
+	{{ /block }}
+
+	<!-- common footer -->
+	{{ include './_partials/footer.html' }}
+
+	<!-- JavaScript code -->
+	<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+	{{ block 'contentJavascriptCode'}}{{ /block }}
+</body>
+</html>
