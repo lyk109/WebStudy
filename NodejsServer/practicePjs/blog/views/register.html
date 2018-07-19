@@ -5,11 +5,30 @@
 	<title>Register</title>
 </head>
 <body>
-	<form action="/register" method="post">
-		<input type="text" placeholder="请输入昵称" name="nickname">
-		<input type="email" placeholder="请输入邮箱" name="email">
+	<form id="registerForm">
+		<input type="text" placeholder="请输入昵称" autocomplete="off" name="nickname" autofocus>
+		<input type="email" placeholder="请输入邮箱" autocomplete="off" name="email">
 		<input type="password" placeholder="请输入密码" name="password">
 		<input type="submit" value="注册">
 	</form>
+	<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#registerForm').on('submit', function(e) {
+			e.preventDefault();
+			var formData = $(this).serialize();
+			$.ajax({
+				url: '/register',
+				type: 'post',
+				data: formData,
+				dataType: 'text',
+				success: function(data) {
+					window.alert(data);
+					if(data == '注册成功！'){
+						window.location.href = '/';
+					}
+				}
+			})
+		})
+	</script>
 </body>
 </html>

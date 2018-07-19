@@ -1,1 +1,14 @@
 {{ extend './layout.html' }}
+
+{{ block 'content' }}
+	{{ if user }}
+		<li>您好，{{ user.nickname }}！</li>
+		<a href="/logout"><input type="button" id="logout" value="退出登录"></a>
+	{{ else }}
+		<li><a href="/login">登录</a></li>
+		<li><a href="/register">注册</a></li>
+	{{ /if }}
+{{ /block }}
+
+{{ block 'contentJavascriptCode'}}
+{{ /block }}

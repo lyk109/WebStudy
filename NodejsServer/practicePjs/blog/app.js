@@ -2,6 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var app = express();
 
@@ -16,6 +17,13 @@ app.use(bodyParser.json());
 //express template engine configuration
 app.engine('html', require('express-art-template'));
 app.set('views', path.join(__dirname, '/views/'));
+
+//cookie configuration
+app.use(session({
+	secret: 'lykBlog',
+	resave: false,
+	saveUninitialized: true
+}))
 
 //router configuration
 app.use(require('./router'));
