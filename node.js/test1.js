@@ -38,12 +38,19 @@ var newStudent = new Student({
 // 	}
 // })
 
-Student.remove({name: 'Jack'}, function(err, info) {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log('success');
-		console.log(info);
-		mongoose.disconnect();
+// Student.remove({name: 'Jack'}, function(err, info) {
+// 	if (err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('success');
+// 		console.log(info);
+// 		mongoose.disconnect();
+// 	}
+// })
+
+var a = [];
+for(var i = 0; i < 10; i++){
+	a[i] = function() {
+		return i**3;
 	}
-})
+}
