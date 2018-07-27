@@ -61,7 +61,7 @@
 // 			this.pos = newPos;
 // 		}else{
 // 			return newPos + ' is out of range!';
-// 		}	
+// 		}
 // 	}
 // }
 //利用数组实现栈
