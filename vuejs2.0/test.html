@@ -4,66 +4,32 @@
 	<meta charset="UTF-8">
 	<title>Vue test</title>
 	<style>
+		@keyframes animation1{
+			0% {font-size: 50px;}
+			50% {font-size: 100px;}
+			100% {font-size: 200px;}
+		}
 		[v-cloak]{
 			display: none;
 		}
-		.darkcyan{
-			background-color: darkcyan;
-		}
-		.red{
-			background-color: red;
-		}
-		.italic{
-			font-style: italic;
-		}
-		table{
-			/*border: 1px solid black;*/
-			border-collapse: collapse;
-			border-spacing: 10px;/
+		.animation11{
+			animation: animation1 5s;
 		}
 	</style>
 </head>
 <body>
 	<div id="app" v-cloak>
-		<p v-if="false">v-if</p>
-		<p v-show="false">v-show</p>
-		{{message}}
-		<input type="text" v-focus:abc.m.n="1+2+'a'" v-bind:value='message'>
-		<input type="text" v-bind:value='message'>
+		<button @click="show = !show">toggle</button>
+		<transition enter-active-class="animation11" :duration="{enter: 5000}">
+			<p v-if="show">testAni</p>
+		</transition>
 	</div>
-
 	<script type="text/javascript" src="vue.js"></script>
-	<script type="text/javascript">
-		Vue.directive('focus', {
-			bind: function(el,binding) {
-				el.value = 123;
-				console.log(binding.name);
-				console.log(binding.value);
-				console.log(binding.expression);
-				console.log(binding.arg);
-				console.log(binding.modifiers);
-			},
-			inserted: function(el) {
-				el.focus();
-			},
-			update: function() {
-				console.log('updated');
-			}
-		})
+	<script>
 		var vm = new Vue({
 			el: "#app",
 			data: {
-				message: 'this is vue test page',
-				htmlStr: '<h1>Big header</h1>',
-				classObj: {
-					italic: false,
-					red: false,
-					darkcyan: true
-				},
-				students: [{name: 'zhangsan', age: 18, school: 'qinghua'},
-				{name: 'lisi', age: 20, school: 'beida'},
-				{name: 'wangwu', age: 22, school: 'fudan'},
-				{name: 'wangermazi', age: 25, school: 'shanghaijiaotong'}]
+				"show": true
 			},
 			methods: {
 
