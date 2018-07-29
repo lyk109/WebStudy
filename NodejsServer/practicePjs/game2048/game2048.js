@@ -414,7 +414,7 @@ document.onkeydown = function(e) {
 				isMoving = false;
 				freshScore(addScore);
 				generate();
-			}, 200)
+			}, 250)
 		}
 	}
 }
@@ -477,7 +477,7 @@ document.ontouchstart = function(e) {
 					isMoving = false;
 					freshScore(addScore);
 					generate();
-				}, 200)
+				}, 250)
 			}
 		}
 	}
