@@ -38,7 +38,7 @@ document.getElementById('restart').onclick = function() {
 	restart();
 }
 document.getElementsByClassName('restart')[0].onclick = function() {
-	restart();
+	window.location.href = "http://liyunkun.info/2048";
 }
 
 //在空白处生成新的数字
