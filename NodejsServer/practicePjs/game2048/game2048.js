@@ -441,19 +441,19 @@ document.onkeydown = function(e) {
 }
 
 // 绑定事件，移动端
-document.addEventListener('touchmove', function(e) {
+document.querySelector('#touchArea').addEventListener('touchmove', function(e) {
 	e.preventDefault();
 },{passive: false})
-document.ontouchstart = function(e) {
+document.querySelector('#touchArea').ontouchstart = function(e) {
 	var startX = e.changedTouches[0].clientX;
 	var startY = e.changedTouches[0].clientY;
 	if (isMoving) {
-		document.ontouchend = null;
+		document.querySelector('#touchArea').ontouchend = null;
 		return;
 	} else {
 		addScore = 0
 		var hasMoved = false;
-		document.ontouchend = function(e) {
+		document.querySelector('#touchArea').ontouchend = function(e) {
 			var deltaX = e.changedTouches[0].clientX - startX;
 			var deltaY = e.changedTouches[0].clientY - startY;
 			// 水平滑动
