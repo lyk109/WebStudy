@@ -411,10 +411,12 @@ document.onkeydown = function(e) {
 		}
 		if (hasMoved) {
 			setTimeout(function() {
-				isMoving = false;
 				freshScore(addScore);
 				generate();
-			}, 250)
+			}, 250);
+			setTimeout(function() {
+				isMoving = false;
+			}, 150);
 		}
 	}
 }
@@ -427,6 +429,7 @@ document.ontouchstart = function(e) {
 	var startX = e.changedTouches[0].clientX;
 	var startY = e.changedTouches[0].clientY;
 	if (isMoving) {
+		document.ontouchend = null;
 		return;
 	} else {
 		addScore = 0
@@ -474,10 +477,12 @@ document.ontouchstart = function(e) {
 			}
 			if (hasMoved) {
 				setTimeout(function() {
-					isMoving = false;
 					freshScore(addScore);
 					generate();
-				}, 250)
+				}, 250);
+				setTimeout(function() {
+					isMoving = false;
+				}, 150);
 			}
 		}
 	}
