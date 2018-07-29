@@ -463,7 +463,7 @@ document.ontouchstart = function(e) {
 						}	
 					}
 				}
-				if (deltaX <= 0) {
+				if (deltaY <= 0) {
 					for (let n = 0; n < 4; n++) {
 						if (up(n)) {
 							hasMoved = true;
