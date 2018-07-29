@@ -91,7 +91,7 @@ app.get('/2048/postScore', function(req, res) {
 			var scores = JSON.parse(data).scores;
 
 			// handle user score
-			query.user = req.socket.remoteAddress;
+			query.user = req.socket.remoteAddress.replace('::ffff:','');
 			query.time = new Date();
 			scores.unshift(query);
 			var scoresFile = JSON.stringify({"scores": scores})

@@ -20,7 +20,19 @@ function restart() {
 }
 restart();
 
-document.querySelectorAll('.dateTime')[0].innerText = new Date(document.querySelectorAll('.dateTime')[0].innerText).toLocaleString();
+// 格式化时间
+var dateTimeEle = document.querySelectorAll('.dateTime');
+for(var i = 0; i < dateTimeEle.length; i++) {
+	var date = new Date(dateTimeEle[i].innerText || dateTimeEle[i].textContent);
+	var dateYear = date.getFullYear();
+	var dateMonth = (date.getMonth() + 1) < 10 ? '0'+ (date.getMonth() + 1) : date.getMonth() + 1;
+	var dateDate = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+	var dateHours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+	var dateMinutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+	date = `${dateYear}-${dateMonth}-${dateDate} ${dateHours}:${dateMinutes}`;
+	dateTimeEle[i].innerText ? dateTimeEle[i].innerText = date : dateTimeEle[i].textContent = date;
+}
+
 // 重新游戏
 document.getElementById('restart').onclick = function() {
 	restart();
