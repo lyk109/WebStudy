@@ -368,9 +368,9 @@ function down(n) {
 	}
 }
 
-// 绑定事件
 var isMoving = false;
 var addScore = 0;
+// 绑定事件，PC端
 document.onkeydown = function(e) {
 	if (isMoving) {
 		return;
@@ -415,6 +415,67 @@ document.onkeydown = function(e) {
 				freshScore(addScore);
 				generate();
 			}, 200)
+		}
+	}
+}
+
+// 绑定事件，移动端
+document.ontouchstart = function(e) {
+	var startX = e.changedTouches[0].clientX;
+	var startY = e.changedTouches[0].clientY;
+	if (isMoving) {
+		return;
+	} else {
+		addScore = 0
+		var hasMoved = false;
+		document.ontouchend = function(e) {
+			var deltaX = e.changedTouches[0].clientX - startX;
+			var deltaY = e.changedTouches[0].clientY - startY;
+			// 水平滑动
+			if (Math.abs(deltaX) > Math.abs(deltaY)) {
+				if (deltaX > 0) {
+					for (let n = 0; n < 4; n++) {
+						if (right(n)) {
+							hasMoved = true;
+							isMoving = true;
+						}	
+					}
+				}
+				if (deltaX <= 0) {
+					for (let n = 0; n < 4; n++) {
+						if (left(n)) {
+							hasMoved = true;
+							isMoving = true;
+						}	
+					}	
+				}
+			}
+			// 垂直滑动
+			if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+				if (deltaY > 0) {
+					for (let n = 0; n < 4; n++) {
+						if (down(n)) {
+							hasMoved = true;
+							isMoving = true;
+						}	
+					}
+				}
+				if (deltaX <= 0) {
+					for (let n = 0; n < 4; n++) {
+						if (up(n)) {
+							hasMoved = true;
+							isMoving = true;
+						}	
+					}	
+				}
+			}
+			if (hasMoved) {
+				setTimeout(function() {
+					isMoving = false;
+					freshScore(addScore);
+					generate();
+				}, 200)
+			}
 		}
 	}
 }
