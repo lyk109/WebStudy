@@ -101,7 +101,7 @@ app.get('/2048/postScore', function(req, res) {
 					return res.end(2);
 				}
 				res.statusCode = 200;
-				return res.end();
+				return res.send(query);
 			})
 		}
 	})

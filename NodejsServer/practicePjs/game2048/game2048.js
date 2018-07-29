@@ -21,15 +21,19 @@ function restart() {
 restart();
 
 // 格式化时间
-var dateTimeEle = document.querySelectorAll('.dateTime');
-for(var i = 0; i < dateTimeEle.length; i++) {
-	var date = new Date(dateTimeEle[i].innerText || dateTimeEle[i].textContent);
+function formatTime(dateTime) {
+	var date = new Date(dateTime);
 	var dateYear = date.getFullYear();
 	var dateMonth = (date.getMonth() + 1) < 10 ? '0'+ (date.getMonth() + 1) : date.getMonth() + 1;
 	var dateDate = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
 	var dateHours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
 	var dateMinutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-	date = `${dateYear}-${dateMonth}-${dateDate} ${dateHours}:${dateMinutes}`;
+	return `${dateYear}-${dateMonth}-${dateDate} ${dateHours}:${dateMinutes}`;
+}
+var dateTimeEle = document.querySelectorAll('.dateTime');
+for(var i = 0; i < dateTimeEle.length; i++) {
+	var date = dateTimeEle[i].innerText || dateTimeEle[i].textContent;
+	date = formatTime(date);
 	dateTimeEle[i].innerText ? dateTimeEle[i].innerText = date : dateTimeEle[i].textContent = date;
 }
 
@@ -38,7 +42,7 @@ document.getElementById('restart').onclick = function() {
 	restart();
 }
 document.getElementsByClassName('restart')[0].onclick = function() {
-	window.location.href = "http://liyunkun.info/2048";
+	restart();
 }
 
 //在空白处生成新的数字
@@ -87,6 +91,7 @@ function finish() {
 				alert("分数上传失败");
 			} else {
 				alert("分数上传成功");
+				addScoreToList(xhr.responseText);
 			}
 		};
 		xhr.ontimeout = function() {
@@ -94,6 +99,16 @@ function finish() {
 		}
 		xhr.send();
 	}
+}
+
+// 追加分数到列表
+function addScoreToList(scoreObj) {
+	var scoreObj = JSON.parse(scoreObj);
+	scoreObj.time = formatTime(scoreObj.time);
+	var ref = document.querySelector('#history tbody tr');
+	var newEle = document.createElement('tr');
+	newEle.innerHTML = `<td>${scoreObj.user}</td><td>${scoreObj.score}</td><td>${scoreObj.time}</td>`;
+	document.querySelector('#history tbody').insertBefore(newEle, ref);
 }
 
 //游戏结束
@@ -378,6 +393,7 @@ document.onkeydown = function(e) {
 		addScore = 0
 		var hasMoved = false;
 		if (e.key == 'ArrowLeft') {
+			e.preventDefault ? e.preventDefault() : e.returnValue = false;
 			for (let n = 0; n < 4; n++) {
 				if (left(n)) {
 					hasMoved = true;
@@ -386,6 +402,7 @@ document.onkeydown = function(e) {
 			}
 		}
 		if (e.key == 'ArrowRight') {
+			e.preventDefault ? e.preventDefault() : e.returnValue = false;
 			for (let n = 0; n < 4; n++) {
 				if (right(n)) {
 					hasMoved = true;
@@ -394,6 +411,7 @@ document.onkeydown = function(e) {
 			}
 		}
 		if (e.key == 'ArrowUp') {
+			e.preventDefault ? e.preventDefault() : e.returnValue = false;
 			for (let n = 0; n < 4; n++) {
 				if (up(n)) {
 					hasMoved = true;
@@ -402,6 +420,7 @@ document.onkeydown = function(e) {
 			}
 		}
 		if (e.key == 'ArrowDown') {
+			e.preventDefault ? e.preventDefault() : e.returnValue = false;
 			for (let n = 0; n < 4; n++) {
 				if (down(n)) {
 					hasMoved = true;

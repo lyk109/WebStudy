@@ -30,6 +30,7 @@ header{
 .container{
 	margin: 0 auto;
 	margin-top: 20px;
+	position: relative;
 }
 
 table.board{
@@ -113,6 +114,7 @@ table.board td>p.extraLarge{
 .endGame.restart{
 	cursor: pointer;
 	margin-top: 10px;
+	margin-bottom: 150px;
 }
 
 .endGame.restart:active{

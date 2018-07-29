@@ -38,7 +38,26 @@
 				<td></td>
 			</tr>
 		</table>
-		<table id="history">
+<!-- 		<table id="history">
+			<thead>
+				<td>用户</td>
+				<td>分数</td>
+				<td>时间</td>
+			</thead>
+			<tbody>
+				{{each scores}}
+				<tr>
+					<td>{{ $value.user }}</td>
+					<td>{{ $value.score }}</td>
+					<td>{{ $value.time }}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table> -->
+		<section class="endGame">游戏结束</section>
+		<section class="endGame restart">重新开始</section>
+	</section>
+	<table id="history">
 			<thead>
 				<td>用户</td>
 				<td>分数</td>
@@ -54,9 +73,6 @@
 				{{/each}}
 			</tbody>
 		</table>
-	</section>
-	<section class="endGame">游戏结束</section>
-	<section class="endGame restart">重新开始</section>
 	<script type="text/javascript" src="game2048.js"></script>
 </body>
 </html>
