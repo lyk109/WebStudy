@@ -106,9 +106,11 @@
 			$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
 		}, 2000);
 
-		$('div.container').on('mouseover', function() {
+		$('div.layout').on('mouseover', function() {
+			$('div.layout>.focus').css('display','block')
 			clearInterval(autoTimer);
 		}).on('mouseout', function() {
+			$('div.layout>.focus').css('display','none')
 			autoTimer = setInterval(function() {
 				index--;
 				$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
