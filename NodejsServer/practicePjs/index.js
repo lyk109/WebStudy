@@ -107,6 +107,6 @@ app.get('/2048/postScore', function(req, res) {
 	})
 })
 
-app.listen(9000, function() {
+app.listen(80, function() {
 	console.log('server is online...')
 })
