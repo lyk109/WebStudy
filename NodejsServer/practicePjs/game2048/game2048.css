@@ -143,4 +143,5 @@ table#history td{
 	width: 80%;
 	padding-bottom: 400px;
 	margin: 0 auto;
+	background-color: rgba(200,200,200,0.08);
 }
