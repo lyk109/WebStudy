@@ -41,6 +41,11 @@ for(var i = 0; i < dateTimeEle.length; i++) {
 document.getElementById('restart').onclick = function() {
 	restart();
 }
+document.getElementsByClassName('endGame')[0].onclick = function() {
+	document.getElementsByClassName('endGame')[0].style.display = 'none';
+	document.getElementsByClassName('endGame')[1].style.display = 'none';
+	document.getElementsByClassName('container')[0].style.opacity = 0.6;
+}
 document.getElementsByClassName('restart')[0].onclick = function() {
 	restart();
 }
