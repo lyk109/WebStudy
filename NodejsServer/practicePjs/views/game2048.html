@@ -42,23 +42,23 @@
 		</section>
 		<section class="endGame">游戏结束</section>
 		<section class="endGame restart">重新开始</section>
-	</div>
 	<table id="history">
-			<thead>
-				<td>用户</td>
-				<td>分数</td>
-				<td>时间</td>
-			</thead>
-			<tbody>
-				{{ each scores }}
-				<tr>
-					<td>{{ $value.user }}</td>
-					<td>{{ $value.score }}</td>
-					<td class="dateTime">{{ $value.time }}</td>
-				</tr>
-				{{ /each }}
-			</tbody>
-		</table>
+		<thead>
+			<td>用户</td>
+			<td>分数</td>
+			<td>时间</td>
+		</thead>
+		<tbody>
+			{{ each scores }}
+			<tr>
+				<td>{{ $value.user }}</td>
+				<td>{{ $value.score }}</td>
+				<td class="dateTime">{{ $value.time }}</td>
+			</tr>
+			{{ /each }}
+		</tbody>
+	</table>
+</div>
 	<script type="text/javascript" src="game2048/game2048.js"></script>
 </body>
 </html>

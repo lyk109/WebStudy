@@ -123,7 +123,7 @@ table.board td>p.extraLarge{
 
 table#history{
 	margin: 0 auto;
-	margin-top:-350px;
+	margin-top:50px;
 	margin-bottom: 20px;
 	list-style: none;
 	border: 1px solid black;
@@ -141,7 +141,8 @@ table#history td{
 
 #touchArea{
 	width: 80%;
-	padding-bottom: 400px;
+	height: 900px;
 	margin: 0 auto;
 	background-color: rgba(200,200,200,0.08);
+	z-index: 100;
 }
