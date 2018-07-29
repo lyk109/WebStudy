@@ -20,6 +20,7 @@ function restart() {
 }
 restart();
 
+document.querySelectorAll('.dateTime')[0].innerText = new Date(document.querySelectorAll('.dateTime')[0].innerText).toLocaleString();
 // 重新游戏
 document.getElementById('restart').onclick = function() {
 	restart();
@@ -65,6 +66,21 @@ function finish() {
 	}
 	if (finished) {
 		end();
+		var xhr = new XMLHttpRequest();
+		var score = document.getElementById('score').innerText;
+		xhr.open('GET', '/2048/postScore?score=' + score);
+		xhr.timeout = 10000;
+		xhr.onload = function () {
+			if (xhr.status == 500) {
+				alert("分数上传失败");
+			} else {
+				alert("分数上传成功");
+			}
+		};
+		xhr.ontimeout = function() {
+			alert("分数上传响应超时");
+		}
+		xhr.send();
 	}
 }
 

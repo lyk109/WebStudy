@@ -60,6 +60,53 @@ app.get('/comment', function(req, res) {
 	})
 })
 
+// handle 2048 game
+app.get('/2048', function(req, res) {
+	var query = url.parse(req.url, true).query;
+	fs.readFile('./game2048/score.json', 'utf-8', function(err, data) {
+		if (err) {
+			res.statusCode = 500;
+			return res.end();
+		} else {
+			// get scores information
+			var scores = JSON.parse(data).scores;
+
+			// render htmlTemplate
+			res.render('game2048.html', {
+				"scores": scores
+			})
+
+		}
+	})
+})
+
+app.get('/2048/postScore', function(req, res) {
+	var query = url.parse(req.url, true).query;
+	fs.readFile('./game2048/score.json', 'utf-8', function(err, data) {
+		if (err) {
+			res.statusCode = 500;
+			return res.end(1);
+		} else {
+			// get scores information
+			var scores = JSON.parse(data).scores;
+
+			// handle user score
+			query.user = req.socket.remoteAddress;
+			query.time = new Date();
+			scores.unshift(query);
+			var scoresFile = JSON.stringify({"scores": scores})
+			fs.writeFile('./game2048/score.json', scoresFile, function(err) {
+				if (err) {
+					res.statusCode = 500;
+					return res.end(2);
+				}
+				res.statusCode = 200;
+				return res.end();
+			})
+		}
+	})
+})
+
 app.listen(9000, function() {
 	console.log('server is online...')
 })

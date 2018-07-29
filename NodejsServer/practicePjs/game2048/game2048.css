@@ -42,14 +42,14 @@ table.board{
 	color: #eee;
 }
 
-table td{
+table.board td{
 	width: 70px;
 	height: 70px;
 	background-color: #aaa;
 	border-radius: 5px;
 }
 
-table td>p{
+table.board td>p{
 	position: relative;
 	left: 0;
 	top: 0;
@@ -61,35 +61,35 @@ table td>p{
 	border-radius: 5px;
 }
 
-table td>p.small{
+table.board td>p.small{
 	font-size: 35px;
 	background-color: #888;
 }
-table td>p.medium{
+table.board td>p.medium{
 	font-size: 35px;
 	background-color: #777;
 }
-table td>p.large{
+table.board td>p.large{
 	font-size: 32px;
 	background-color: #666;
 }
-table td>p.num512{
+table.board td>p.num512{
 	font-size: 32px;
 	background-color: #444;
 }
-table td>p.num1024{
+table.board td>p.num1024{
 	font-size: 24px;
 	background-color: #333;
 }
-table td>p.num2048{
+table.board td>p.num2048{
 	font-size: 24px;
 	background-color: #222;
 }
-table td>p.num4096{
+table.board td>p.num4096{
 	font-size: 24px;
 	background-color: #111;
 }
-table td>p.extraLarge{
+table.board td>p.extraLarge{
 	font-size: 24px;
 	background-color: #000;
 }
@@ -117,4 +117,21 @@ table td>p.extraLarge{
 
 .endGame.restart:active{
 	font-weight: bold;
+}
+
+table#history{
+	margin: 0 auto;
+	margin-top: 50px;
+	list-style: none;
+	border: 1px solid black;
+	border-spacing: 10px;
+}
+
+table#history thead{
+	font-weight: bold;
+}
+
+table#history td{
+	width: 150px;
+	text-align: center;
 }

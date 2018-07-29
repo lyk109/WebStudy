@@ -45,13 +45,13 @@
 				<td>时间</td>
 			</thead>
 			<tbody>
-				{{each scores}}
+				{{ each scores }}
 				<tr>
 					<td>{{ $value.user }}</td>
 					<td>{{ $value.score }}</td>
-					<td>{{ $value.time }}</td>
+					<td class="dateTime">{{ $value.time }}</td>
 				</tr>
-				{{/each}}
+				{{ /each }}
 			</tbody>
 		</table>
 	</section>
