@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<button>发送ajax请求</button>
+	<div id="ajaxRes"></div>
+
+	<script type="text/javascript">
+		function sendAjax() {
+			console.log('111');
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'http://localhost:5000');
+			xhr.timeout = 10000;
+			xhr.onerror = function() {
+				alert(xhr.response);
+			}
+			xhr.onload = function() {
+				document.getElementById('ajaxRes').innerText = xhr.responseText;
+			}
+			xhr.ontimeout = function() {
+				alert("请求超时");
+			}
+			xhr.send();
+		}
+		document.getElementsByTagName('button')[0].onclick = sendAjax;
+	</script>
+</body>
+</html>
